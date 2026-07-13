@@ -96,39 +96,10 @@ O terminal deve devolver um array de objetos JSON que detalha as ações e os ti
 
 Durante o ciclo de check-in, podem ocorrer erros nos seguintes pontos:
 
-<table>
-  <thead>
-    <tr>
-      <th width="30%" align="left">Erro</th>
-      <th width="30%" align="center">Status HTTP</th>
-      <th width="40%" align="left">Causa</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Terminal Offline</strong></td>
-      <td><code>503 Service Unavailable</code></td>
-      <td>O ID do terminal não possui conexão ativa registrada na memória do servidor.</td>
-    </tr>
-    <tr>
-      <td><strong>Tempo Excedido (Timeout)</strong></td>
-      <td><code>504 Gateway Timeout</code></td>
-      <td>O terminal demorou mais de 10 segundos para responder ao evento <code>request_checkin</code>.</td>
-    </tr>
-    <tr>
-      <td><strong>Falha de Comunicação</strong></td>
-      <td><code>500 Internal Server Error</code></td>
-      <td>Erros na camada do socket ou interrupção repentina da rede do totem.</td>
-    </tr>
-    <tr>
-      <td><strong>Formato Inválido</strong></td>
-      <td><code>502 Bad Gateway</code></td>
-      <td>O terminal respondeu ao ACK mas com um payload que não seja uma lista de tickets válida.</td>
-    </tr>
-    <tr>
-      <td><strong>Falha de Integridade</strong></td>
-      <td><code>502 Bad Gateway</code></td>
-      <td>O terminal retornou referências de layout (<code>layout_ref</code>) que não existem cadastradas no banco para aquele terminal.</td>
-    </tr>
-  </tbody>
-</table>
+| Erro | Status HTTP | Causa |
+| :--- | :--- | :--- |
+| Terminal Offline | `503 Service Unavailable` | O ID do terminal não possui conexão ativa registrada na memória do servidor. |
+| Tempo Excedido (Timeout) | `504 Gateway Timeout` | O terminal demorou mais de 10 segundos para responder ao evento `request_checkin`. |
+| Falha de Comunicação | `500 Internal Server Error` | Erros na camada do socket ou interrupção repentina da rede do totem. |
+| Formato Inválido | `502 Bad Gateway` | O terminal respondeu ao ACK mas com um payload que não seja uma lista de tickets válida. |
+| Falha de Integridade | `502 Bad Gateway` | O terminal retornou referências de layout (`layout_ref`) que não existem cadastradas no banco para aquele terminal. |

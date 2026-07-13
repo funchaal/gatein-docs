@@ -15,209 +15,53 @@ O módulo de viagens foi projetado para **Transportadoras, Embarcadores e Operad
 > [!NOTE]
 > Os campos marcados com `*` são obrigatórios.
 
-<table>
-  <thead>
-    <tr>
-      <th width="40%" align="left">Campo</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="40%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>*tax_id</code></td>
-      <td><code>string</code></td>
-      <td>CPF ou CNPJ do motorista (apenas números)</td>
-    </tr>
-    <tr>
-      <td><code>*driver_license_number</code></td>
-      <td><code>string</code></td>
-      <td>Número da CNH</td>
-    </tr>
-    <tr>
-      <td><code>*license_category</code></td>
-      <td><code>string</code></td>
-      <td>Categoria de habilitação (ex: <code>C</code>, <code>D</code>, <code>E</code>)</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `*tax_id` | `string` | CPF ou CNPJ do motorista (apenas números) |
+| `*driver_license_number` | `string` | Número da CNH |
+| `*license_category` | `string` | Categoria de habilitação (ex: `C`, `D`, `E`) |
 
 ### Trip
 
-<table>
-  <thead>
-    <tr>
-      <th width="40%" align="left">Campo</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="40%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>*ref</code></td>
-      <td><code>string</code></td>
-      <td>Referência única da viagem no seu TMS/ERP (ex: número do MDF-e ou CT-e). Usada em todas as consultas e atualizações</td>
-    </tr>
-    <tr>
-      <td><code>*layout_ref</code></td>
-      <td><code>string</code></td>
-      <td>Código do layout dinâmico associado</td>
-    </tr>
-    <tr>
-      <td><code>vehicle_plate</code></td>
-      <td><code>string</code></td>
-      <td>Placa do caminhão/carreta</td>
-    </tr>
-    <tr>
-      <td><code>summary</code></td>
-      <td><code>string</code></td>
-      <td>Observações ou detalhes adicionais da rota</td>
-    </tr>
-    <tr>
-      <td><code>start_time</code></td>
-      <td><code>string</code> ISO-8601</td>
-      <td>Início previsto da viagem</td>
-    </tr>
-    <tr>
-      <td><code>end_time</code></td>
-      <td><code>string</code> ISO-8601</td>
-      <td>Término previsto</td>
-    </tr>
-    <tr>
-      <td><code>schedule_start_tolerance</code></td>
-      <td><code>integer</code></td>
-      <td>Margem de tolerância em minutos antes do início (default: <code>0</code>)</td>
-    </tr>
-    <tr>
-      <td><code>schedule_end_tolerance</code></td>
-      <td><code>integer</code></td>
-      <td>Margem de tolerância em minutos após o término (default: <code>0</code>)</td>
-    </tr>
-    <tr>
-      <td><code>custom_data</code></td>
-      <td><code>object</code></td>
-      <td>Metadados dinâmicos estruturados da viagem</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `*ref` | `string` | Referência única da viagem no seu TMS/ERP (ex: número do MDF-e ou CT-e). Usada em todas as consultas e atualizações |
+| `*layout_ref` | `string` | Código do layout dinâmico associado |
+| `vehicle_plate` | `string` | Placa do caminhão/carreta |
+| `summary` | `string` | Observações ou detalhes adicionais da rota |
+| `start_time` | `string` ISO-8601 | Início previsto da viagem |
+| `end_time` | `string` ISO-8601 | Término previsto |
+| `schedule_start_tolerance` | `integer` | Margem de tolerância em minutos antes do início (default: `0`) |
+| `schedule_end_tolerance` | `integer` | Margem de tolerância em minutos após o término (default: `0`) |
+| `custom_data` | `object` | Metadados dinâmicos estruturados da viagem |
 
 ### Dados Geográficos de Origem
 
-<table>
-  <thead>
-    <tr>
-      <th width="40%" align="left">Campo</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="40%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>from_location</code></td>
-      <td><code>string</code></td>
-      <td>Descrição textual da origem (ex: <code>Fábrica de Cimento Votorantim</code>)</td>
-    </tr>
-    <tr>
-      <td><code>origin_street</code></td>
-      <td><code>string</code></td>
-      <td>Nome da rua/avenida</td>
-    </tr>
-    <tr>
-      <td><code>origin_number</code></td>
-      <td><code>string</code></td>
-      <td>Número predial</td>
-    </tr>
-    <tr>
-      <td><code>origin_city</code></td>
-      <td><code>string</code></td>
-      <td>Cidade</td>
-    </tr>
-    <tr>
-      <td><code>origin_state</code></td>
-      <td><code>string</code></td>
-      <td>Estado (sigla com 2 caracteres, ex: <code>SP</code>)</td>
-    </tr>
-    <tr>
-      <td><code>origin_country</code></td>
-      <td><code>string</code></td>
-      <td>País</td>
-    </tr>
-    <tr>
-      <td><code>origin_zip</code></td>
-      <td><code>string</code></td>
-      <td>CEP (apenas números)</td>
-    </tr>
-    <tr>
-      <td><code>origin_lat</code></td>
-      <td><code>float</code></td>
-      <td>Latitude para geofencing (ex: <code>-20.1219</code>)</td>
-    </tr>
-    <tr>
-      <td><code>origin_lng</code></td>
-      <td><code>float</code></td>
-      <td>Longitude para geofencing (ex: <code>-44.1997</code>)</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `from_location` | `string` | Descrição textual da origem (ex: `Fábrica de Cimento Votorantim`) |
+| `origin_street` | `string` | Nome da rua/avenida |
+| `origin_number` | `string` | Número predial |
+| `origin_city` | `string` | Cidade |
+| `origin_state` | `string` | Estado (sigla com 2 caracteres, ex: `SP`) |
+| `origin_country` | `string` | País |
+| `origin_zip` | `string` | CEP (apenas números) |
+| `origin_lat` | `float` | Latitude para geofencing (ex: `-20.1219`) |
+| `origin_lng` | `float` | Longitude para geofencing (ex: `-44.1997`) |
 
 ### Dados Geográficos de Destino
 
-<table>
-  <thead>
-    <tr>
-      <th width="40%" align="left">Campo</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="40%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>to_location</code></td>
-      <td><code>string</code></td>
-      <td>Descrição textual do destino (ex: <code>Centro de Distribuição Cajamar</code>)</td>
-    </tr>
-    <tr>
-      <td><code>destiny_street</code></td>
-      <td><code>string</code></td>
-      <td>Nome da rua/avenida</td>
-    </tr>
-    <tr>
-      <td><code>destiny_number</code></td>
-      <td><code>string</code></td>
-      <td>Número predial</td>
-    </tr>
-    <tr>
-      <td><code>destiny_city</code></td>
-      <td><code>string</code></td>
-      <td>Cidade</td>
-    </tr>
-    <tr>
-      <td><code>destiny_state</code></td>
-      <td><code>string</code></td>
-      <td>Estado (sigla com 2 caracteres)</td>
-    </tr>
-    <tr>
-      <td><code>destiny_country</code></td>
-      <td><code>string</code></td>
-      <td>País</td>
-    </tr>
-    <tr>
-      <td><code>destiny_zip</code></td>
-      <td><code>string</code></td>
-      <td>CEP (apenas números)</td>
-    </tr>
-    <tr>
-      <td><code>destiny_lat</code></td>
-      <td><code>float</code></td>
-      <td>Latitude do destino</td>
-    </tr>
-    <tr>
-      <td><code>destiny_lng</code></td>
-      <td><code>float</code></td>
-      <td>Longitude do destino</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `to_location` | `string` | Descrição textual do destino (ex: `Centro de Distribuição Cajamar`) |
+| `destiny_street` | `string` | Nome da rua/avenida |
+| `destiny_number` | `string` | Número predial |
+| `destiny_city` | `string` | Cidade |
+| `destiny_state` | `string` | Estado (sigla com 2 caracteres) |
+| `destiny_country` | `string` | País |
+| `destiny_zip` | `string` | CEP (apenas números) |
+| `destiny_lat` | `float` | Latitude do destino |
+| `destiny_lng` | `float` | Longitude do destino |
 
 ---
 
@@ -314,32 +158,12 @@ print(response.json())
 
 ### Campos Protegidos (não editáveis)
 
-<table>
-  <thead>
-    <tr>
-      <th width="30%" align="left">Campo</th>
-      <th width="70%" align="left">Motivo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>id</code></td>
-      <td>Chave primária interna</td>
-    </tr>
-    <tr>
-      <td><code>trucking_company_id</code></td>
-      <td>Vínculo de propriedade imutável</td>
-    </tr>
-    <tr>
-      <td><code>ref</code></td>
-      <td>Chave de referência externa — usada como identificador</td>
-    </tr>
-    <tr>
-      <td><code>driver_id</code></td>
-      <td>Identidade do motorista vinculado</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Motivo |
+| :--- | :--- |
+| `id` | Chave primária interna |
+| `trucking_company_id` | Vínculo de propriedade imutável |
+| `ref` | Chave de referência externa — usada como identificador |
+| `driver_id` | Identidade do motorista vinculado |
 
 
 ### Payload de Exemplo
@@ -378,22 +202,9 @@ Altera o status da viagem para `DELETED`. Exemplo de envio em lote:
 
 ### Query Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th width="20%" align="left">Parâmetro</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="60%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>refs</code></td>
-      <td><code>string[]</code></td>
-      <td>Repita o parâmetro para múltiplos valores: <code>?refs=TR-MDFE-4819&amp;refs=TR-MDFE-4820</code></td>
-    </tr>
-  </tbody>
-</table>
+| Parâmetro | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `refs` | `string[]` | Repita o parâmetro para múltiplos valores: `?refs=TR-MDFE-4819&refs=TR-MDFE-4820` |
 
 
 ### Resposta de Exemplo
@@ -459,34 +270,9 @@ Altera o status da viagem para `DELETED`. Exemplo de envio em lote:
 
 ## Erros Comuns
 
-<table>
-  <thead>
-    <tr>
-      <th width="15%" align="left">HTTP</th>
-      <th width="35%" align="left">code</th>
-      <th width="50%" align="left">Causa</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>400</code></td>
-      <td><code>EMPTY_PAYLOAD</code></td>
-      <td>Array vazio enviado no body</td>
-    </tr>
-    <tr>
-      <td><code>400</code></td>
-      <td><code>INVALID_LAYOUT_REF</code></td>
-      <td><code>layout_ref</code> não existe para esta transportadora</td>
-    </tr>
-    <tr>
-      <td><code>409</code></td>
-      <td><code>DUPLICATE_KEY</code></td>
-      <td>Um ou mais <code>ref</code>s já existem no banco</td>
-    </tr>
-    <tr>
-      <td><code>404</code></td>
-      <td><code>REFS_NOT_FOUND</code></td>
-      <td><code>ref</code>s informados no PUT/DELETE não foram encontrados</td>
-    </tr>
-  </tbody>
-</table>
+| HTTP | code | Causa |
+| :--- | :--- | :--- |
+| `400` | `EMPTY_PAYLOAD` | Array vazio enviado no body |
+| `400` | `INVALID_LAYOUT_REF` | `layout_ref` não existe para esta transportadora |
+| `409` | `DUPLICATE_KEY` | Um ou mais `ref`s já existem no banco |
+| `404` | `REFS_NOT_FOUND` | `ref`s informados no PUT/DELETE não foram encontrados |

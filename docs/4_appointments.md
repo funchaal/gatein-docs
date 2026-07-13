@@ -15,92 +15,26 @@ O módulo de agendamentos foi feito sob medida para **Terminais logísticos e Po
 > [!NOTE]
 > Os campos marcados com `*` são obrigatórios.
 
-<table>
-  <thead>
-    <tr>
-      <th width="40%" align="left">Campo</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="40%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>*tax_id</code></td>
-      <td><code>string</code></td>
-      <td>CPF ou CNPJ do motorista (apenas números, sem pontos ou traço)</td>
-    </tr>
-    <tr>
-      <td><code>*driver_license_number</code></td>
-      <td><code>string</code></td>
-      <td>Número da CNH</td>
-    </tr>
-    <tr>
-      <td><code>*license_category</code></td>
-      <td><code>string</code></td>
-      <td>Categoria de habilitação (ex: <code>C</code>, <code>D</code>, <code>E</code>)</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `*tax_id` | `string` | CPF ou CNPJ do motorista (apenas números, sem pontos ou traço) |
+| `*driver_license_number` | `string` | Número da CNH |
+| `*license_category` | `string` | Categoria de habilitação (ex: `C`, `D`, `E`) |
 
 
 ### Appointment
 
-<table>
-  <thead>
-    <tr>
-      <th width="40%" align="left">Campo</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="40%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>*ref</code></td>
-      <td><code>string</code></td>
-      <td>Chave única no seu sistema de origem (ex: ID da Ordem de Carga). Usada para buscar, alterar ou remover o registro</td>
-    </tr>
-    <tr>
-      <td><code>*layout_ref</code></td>
-      <td><code>string</code></td>
-      <td>ID do layout dinâmico a aplicar a este agendamento</td>
-    </tr>
-    <tr>
-      <td><code>schedule_start_time</code></td>
-      <td><code>string</code> ISO-8601</td>
-      <td>Horário inicial agendado (ex: <code>2026-07-15T08:00:00Z</code>)</td>
-    </tr>
-    <tr>
-      <td><code>schedule_end_time</code></td>
-      <td><code>string</code> ISO-8601</td>
-      <td>Horário limite final agendado (ex: <code>2026-07-15T12:00:00Z</code>)</td>
-    </tr>
-    <tr>
-      <td><code>schedule_start_tolerance</code></td>
-      <td><code>integer</code></td>
-      <td>Margem de tolerância em minutos antes do início (default: <code>0</code>)</td>
-    </tr>
-    <tr>
-      <td><code>schedule_end_tolerance</code></td>
-      <td><code>integer</code></td>
-      <td>Margem de tolerância em minutos após o término (default: <code>0</code>)</td>
-    </tr>
-    <tr>
-      <td><code>vehicle_plate</code></td>
-      <td><code>string</code></td>
-      <td>Placa do cavalo mecânico ou veículo principal</td>
-    </tr>
-    <tr>
-      <td><code>summary</code></td>
-      <td><code>string</code></td>
-      <td>Observações ou notas textuais sobre a operação</td>
-    </tr>
-    <tr>
-      <td><code>custom_data</code></td>
-      <td><code>object</code></td>
-      <td>Campos adicionais chave-valor para armazenamento livre</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `*ref` | `string` | Chave única no seu sistema de origem (ex: ID da Ordem de Carga). Usada para buscar, alterar ou remover o registro |
+| `*layout_ref` | `string` | ID do layout dinâmico a aplicar a este agendamento |
+| `schedule_start_time` | `string` ISO-8601 | Horário inicial agendado (ex: `2026-07-15T08:00:00Z`) |
+| `schedule_end_time` | `string` ISO-8601 | Horário limite final agendado (ex: `2026-07-15T12:00:00Z`) |
+| `schedule_start_tolerance` | `integer` | Margem de tolerância em minutos antes do início (default: `0`) |
+| `schedule_end_tolerance` | `integer` | Margem de tolerância em minutos após o término (default: `0`) |
+| `vehicle_plate` | `string` | Placa do cavalo mecânico ou veículo principal |
+| `summary` | `string` | Observações ou notas textuais sobre a operação |
+| `custom_data` | `object` | Campos adicionais chave-valor para armazenamento livre |
 
 
 ### Customização Dinâmica de Layout (`layout_ref`)
@@ -109,77 +43,25 @@ A propriedade `layout_ref` vincula o agendamento a um modelo de layout dinâmico
 
 #### Elementos do Card / Modal (`card_layout` / `modal_layout`)
 
-<table>
-  <thead>
-    <tr>
-      <th width="30%" align="left">Elemento</th>
-      <th width="70%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>section</code></td>
-      <td>Título de seção agrupador</td>
-    </tr>
-    <tr>
-      <td><code>field</code></td>
-      <td>Linha com rótulo + valor extraído dinamicamente (ex: <code>driver.name</code>)</td>
-    </tr>
-    <tr>
-      <td><code>alert</code></td>
-      <td>Bloco de destaque com cores (<code>purple</code>, <code>blue</code>, <code>green</code>, <code>yellow</code>, <code>red</code>, <code>gray</code>) e ícones</td>
-    </tr>
-    <tr>
-      <td><code>qrcode</code></td>
-      <td>Código QR renderizado a partir de uma chave de dados</td>
-    </tr>
-  </tbody>
-</table>
+| Elemento | Descrição |
+| :--- | :--- |
+| `section` | Título de seção agrupador |
+| `field` | Linha com rótulo + valor extraído dinamicamente (ex: `driver.name`) |
+| `alert` | Bloco de destaque com cores (`purple`, `blue`, `green`, `yellow`, `red`, `gray`) e ícones |
+| `qrcode` | Código QR renderizado a partir de uma chave de dados |
 
 #### Elementos do Ticket Digital (`TicketLayout`)
 
-<table>
-  <thead>
-    <tr>
-      <th width="30%" align="left">Elemento</th>
-      <th width="70%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>divider</code></td>
-      <td>Linha separadora horizontal</td>
-    </tr>
-    <tr>
-      <td><code>field</code></td>
-      <td>Linha chave-valor (rótulo em cinza, valor em negrito)</td>
-    </tr>
-    <tr>
-      <td><code>section</code></td>
-      <td>Divisor com título de agrupamento em caixa alta</td>
-    </tr>
-    <tr>
-      <td><code>tag_container</code></td>
-      <td>Grupo de etiquetas coloridas arredondadas</td>
-    </tr>
-    <tr>
-      <td><code>attention</code></td>
-      <td>Caixa de alerta com borda e ícone (ex: uso de EPI)</td>
-    </tr>
-    <tr>
-      <td><code>instruction</code></td>
-      <td>Lista ordenada com bullets numerados para o fluxo do motorista</td>
-    </tr>
-    <tr>
-      <td><code>text</code></td>
-      <td>Parágrafo de texto livre (avisos, regras, informações legais)</td>
-    </tr>
-    <tr>
-      <td><code>highlight</code> / <code>highlight_grid</code></td>
-      <td>Dado em destaque com fonte grande (ex: número da baia, peso na balança)</td>
-    </tr>
-  </tbody>
-</table>
+| Elemento | Descrição |
+| :--- | :--- |
+| `divider` | Linha separadora horizontal |
+| `field` | Linha chave-valor (rótulo em cinza, valor em negrito) |
+| `section` | Divisor com título de agrupamento em caixa alta |
+| `tag_container` | Grupo de etiquetas coloridas arredondadas |
+| `attention` | Caixa de alerta com borda e ícone (ex: uso de EPI) |
+| `instruction` | Lista ordenada com bullets numerados para o fluxo do motorista |
+| `text` | Parágrafo de texto livre (avisos, regras, informações legais) |
+| `highlight` / `highlight_grid` | Dado em destaque com fonte grande (ex: número da baia, peso na balança) |
 
 
 ---
@@ -269,32 +151,12 @@ print(response.json())
 
 ### Campos Protegidos (não editáveis)
 
-<table>
-  <thead>
-    <tr>
-      <th width="30%" align="left">Campo</th>
-      <th width="70%" align="left">Motivo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>id</code></td>
-      <td>Chave primária interna</td>
-    </tr>
-    <tr>
-      <td><code>terminal_id</code></td>
-      <td>Vínculo de propriedade imutável</td>
-    </tr>
-    <tr>
-      <td><code>ref</code></td>
-      <td>Chave de referência externa — usada como identificador</td>
-    </tr>
-    <tr>
-      <td><code>user_tax_id</code></td>
-      <td>Identidade do motorista vinculado</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Motivo |
+| :--- | :--- |
+| `id` | Chave primária interna |
+| `terminal_id` | Vínculo de propriedade imutável |
+| `ref` | Chave de referência externa — usada como identificador |
+| `user_tax_id` | Identidade do motorista vinculado |
 
 
 ### Payload de Exemplo
@@ -333,22 +195,9 @@ Altera o status do agendamento para `DELETED` e insere logs de auditoria. Exempl
 
 ### Query Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th width="20%" align="left">Parâmetro</th>
-      <th width="20%" align="left">Tipo</th>
-      <th width="60%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>refs</code></td>
-      <td><code>string[]</code></td>
-      <td>Repita o parâmetro para múltiplos valores: <code>?refs=AG-2026-009&amp;refs=AG-2026-010</code></td>
-    </tr>
-  </tbody>
-</table>
+| Parâmetro | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `refs` | `string[]` | Repita o parâmetro para múltiplos valores: `?refs=AG-2026-009&refs=AG-2026-010` |
 
 
 ### Resposta de Exemplo
@@ -398,34 +247,9 @@ Altera o status do agendamento para `DELETED` e insere logs de auditoria. Exempl
 
 ## Erros Comuns
 
-<table>
-  <thead>
-    <tr>
-      <th width="15%" align="left">HTTP</th>
-      <th width="35%" align="left">code</th>
-      <th width="50%" align="left">Causa</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>400</code></td>
-      <td><code>EMPTY_PAYLOAD</code></td>
-      <td>Array vazio enviado no body</td>
-    </tr>
-    <tr>
-      <td><code>400</code></td>
-      <td><code>INVALID_LAYOUT_REF</code></td>
-      <td><code>layout_ref</code> não existe para este terminal</td>
-    </tr>
-    <tr>
-      <td><code>409</code></td>
-      <td><code>DUPLICATE_KEY</code></td>
-      <td>Um ou mais <code>ref</code>s já existem no banco</td>
-    </tr>
-    <tr>
-      <td><code>404</code></td>
-      <td><code>REFS_NOT_FOUND</code></td>
-      <td><code>ref</code>s informados no PUT/DELETE não foram encontrados</td>
-    </tr>
-  </tbody>
-</table>
+| HTTP | code | Causa |
+| :--- | :--- | :--- |
+| `400` | `EMPTY_PAYLOAD` | Array vazio enviado no body |
+| `400` | `INVALID_LAYOUT_REF` | `layout_ref` não existe para este terminal |
+| `409` | `DUPLICATE_KEY` | Um ou mais `ref`s já existem no banco |
+| `404` | `REFS_NOT_FOUND` | `ref`s informados no PUT/DELETE não foram encontrados |

@@ -49,96 +49,34 @@ Após ler o `auth_token` do `localStorage`, faça uma requisição autenticada c
 > [!NOTE]
 > Os campos marcados com `*` são obrigatórios.
 
-<table>
-  <thead>
-    <tr>
-      <th width="30%" align="left">Header</th>
-      <th width="70%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>*X-API-Key</code></td>
-      <td>Chave de API da sua empresa (<code>sk_live_...</code>)</td>
-    </tr>
-    <tr>
-      <td><code>*Auth-Token</code></td>
-      <td>O JWT lido do <code>localStorage.auth_token</code></td>
-    </tr>
-  </tbody>
-</table>
+| Header | Descrição |
+| :--- | :--- |
+| `*X-API-Key` | Chave de API da sua empresa (`sk_live_...`) |
+| `*Auth-Token` | O JWT lido do `localStorage.auth_token` |
 
 ### Campos da Resposta (`data`)
 
 > [!NOTE]
 > Os campos marcados com `*` são obrigatórios.
 
-<table>
-  <thead>
-    <tr>
-      <th width="20%" align="left">Campo</th>
-      <th width="30%" align="left">Tipo</th>
-      <th width="50%" align="left">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>*tax_id</code></td>
-      <td><code>string</code></td>
-      <td>CPF ou CNPJ do usuário</td>
-    </tr>
-    <tr>
-      <td><code>name</code></td>
-      <td><code>string | null</code></td>
-      <td>Nome completo do usuário</td>
-    </tr>
-    <tr>
-      <td><code>phone</code></td>
-      <td><code>string | null</code></td>
-      <td>Telefone com DDD</td>
-    </tr>
-    <tr>
-      <td><code>email</code></td>
-      <td><code>string | null</code></td>
-      <td>E-mail cadastrado (pode ser nulo)</td>
-    </tr>
-  </tbody>
-</table>
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `*tax_id` | `string` | CPF ou CNPJ do usuário |
+| `name` | `string | null` | Nome completo do usuário |
+| `phone` | `string | null` | Telefone com DDD |
+| `email` | `string | null` | E-mail cadastrado (pode ser nulo) |
 
 ---
 
 ## Segurança
 
-<table>
-  <thead>
-    <tr>
-      <th width="30%" align="left">Aspecto</th>
-      <th width="70%" align="left">Detalhe</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Algoritmo JWT</strong></td>
-      <td>HS256, assinado com a chave secreta do GateIn</td>
-    </tr>
-    <tr>
-      <td><strong>Expiração</strong></td>
-      <td>3 minutos (180 segundos) — valide imediatamente após abrir a página</td>
-    </tr>
-    <tr>
-      <td><strong>Autenticação</strong></td>
-      <td>API Key (<code>X-API-Key</code>) obrigatória em todas as chamadas</td>
-    </tr>
-    <tr>
-      <td><strong>Escopo</strong></td>
-      <td>O token dá acesso apenas à leitura de dados do usuário</td>
-    </tr>
-    <tr>
-      <td><strong>Reutilização</strong></td>
-      <td>Gere um novo token a cada abertura do serviço</td>
-    </tr>
-  </tbody>
-</table>
+| Aspecto | Detalhe |
+| :--- | :--- |
+| Algoritmo JWT | HS256, assinado com a chave secreta do GateIn |
+| Expiração | 3 minutos (180 segundos) — valide imediatamente após abrir a página |
+| Autenticação | API Key (`X-API-Key`) obrigatória em todas as chamadas |
+| Escopo | O token dá acesso apenas à leitura de dados do usuário |
+| Reutilização | Gere um novo token a cada abertura do serviço |
 
 
 ---
@@ -198,34 +136,9 @@ def validate_gatein_user(auth_token: str) -> dict | None:
 
 ## Erros Comuns
 
-<table>
-  <thead>
-    <tr>
-      <th width="20%" align="left">HTTP</th>
-      <th width="30%" align="left">Code</th>
-      <th width="50%" align="left">Causa</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>401</code></td>
-      <td><code>EXPIRED_TOKEN</code></td>
-      <td>Token gerado há mais de 3 minutos</td>
-    </tr>
-    <tr>
-      <td><code>401</code></td>
-      <td><code>INVALID_TOKEN</code></td>
-      <td>Token malformado ou assinatura inválida</td>
-    </tr>
-    <tr>
-      <td><code>401</code></td>
-      <td><code>USER_NOT_FOUND</code></td>
-      <td>Usuário referenciado no token não existe mais</td>
-    </tr>
-    <tr>
-      <td><code>401</code></td>
-      <td><code>INVALID_API_KEY</code></td>
-      <td>A <code>X-API-Key</code> fornecida é inválida</td>
-    </tr>
-  </tbody>
-</table>
+| HTTP | Code | Causa |
+| :--- | :--- | :--- |
+| `401` | `EXPIRED_TOKEN` | Token gerado há mais de 3 minutos |
+| `401` | `INVALID_TOKEN` | Token malformado ou assinatura inválida |
+| `401` | `USER_NOT_FOUND` | Usuário referenciado no token não existe mais |
+| `401` | `INVALID_API_KEY` | A `X-API-Key` fornecida é inválida |

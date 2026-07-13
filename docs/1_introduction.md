@@ -1,7 +1,8 @@
 ---
 sidebar_position: 1
-title: Introdução ao GateIn
+title: Getting Started
 ---
+
 # Getting Started
 
 Bem-vindo à documentação oficial da **API de Integração Externa do GateIn**. 
@@ -24,56 +25,12 @@ Esta API expõe endpoints projetados especificamente para cenários de integraç
 
 Todas as respostas de sucesso da nossa API retornam um envelope JSON unificado com a seguinte assinatura:
 
-```json
+```json title="Exemplo de Resposta (Sucesso)"
 {
   "success": true,
-  "data": { ... }
-}
-```
-
-### Tratamento de Erros e Padrão de Falhas
-
-Quando ocorre uma falha de validação, regra de negócio ou erro interno, o status HTTP correspondente é retornado (ex: `400`, `401`, `409`, etc) juntamente com um objeto descritivo no corpo da resposta:
-
-```json
-{
-  "detail": {
-    "code": "CODIGO_DO_ERRO",
-    "message": "Descrição humanizada do problema para facilitar o debug.",
-    "suggestion": "Sugestão prática de como corrigir ou contatar o suporte."
+  "data": {
+    "id": "apt_123456",
+    "status": "scheduled"
   }
 }
 ```
-
-## Principais Códigos de Erro
-
-<table>
-  <tr>
-    <th width="40%">Código (`code`)</th>
-    <th width="60%">Causa / Descrição</th>
-  </tr>
-  <tr>
-    <td>`EMPTY_PAYLOAD`</td>
-    <td>Enviou uma requisição com array/objeto vazio ou sem corpo de dados.</td>
-  </tr>
-  <tr>
-    <td>`INVALID_API_KEY_FORMAT`</td>
-    <td>A chave informada no header `X-API-Key` não começa com `sk_live_` ou está mal formatada.</td>
-  </tr>
-  <tr>
-    <td>`INVALID_API_KEY`</td>
-    <td>Credencial inexistente ou revogada.</td>
-  </tr>
-  <tr>
-    <td>`DUPLICATE_KEY`</td>
-    <td>Um ou mais registros já existem com as chaves externas (`ref`) informadas.</td>
-  </tr>
-  <tr>
-    <td>`INVALID_LAYOUT_REF`</td>
-    <td>A referência de layout informada não existe no terminal ou transportadora associada.</td>
-  </tr>
-  <tr>
-    <td>`REFS_NOT_FOUND`</td>
-    <td>Uma ou mais referências fornecidas para atualização ou deleção não foram encontradas no banco.</td>
-  </tr>
-</table>
