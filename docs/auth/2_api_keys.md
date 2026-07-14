@@ -1,16 +1,18 @@
 ---
 sidebar_position: 2
-title: Chaves de API (API Keys)
----
-# Chaves de API (API Keys)
-
-As Chaves de API são segredos únicos gerados para cada empresa (seja um Terminal ou uma Transportadora) para permitir a autenticação de sistemas externos (B2B) nas APIs do GateIn.
-
+title: Autenticação via API Key
+slug: /auth/api-keys
 ---
 
-## Como as Chaves de API Funcionam?
+# Autenticação via API Key
 
-Qualquer requisição feita aos endpoints da API (ex: cadastrar agendamentos ou viagens) precisa incluir a chave de API no cabeçalho HTTP:
+As Chaves de API (API Keys) são segredos únicos gerados para cada empresa (seja um Terminal ou uma Transportadora) para permitir a autenticação de sistemas externos (B2B) nas APIs do GateIn.
+
+---
+
+## Como funciona a Autenticação?
+
+Qualquer requisição feita aos endpoints privados da API do GateIn precisa incluir a chave de API no cabeçalho HTTP:
 
 * **Header:** `X-API-Key`
 * **Formato:** Inicia sempre com o prefixo `sk_live_` (exemplo: `sk_live_prod_abc123xyz_key`).
@@ -18,21 +20,21 @@ Qualquer requisição feita aos endpoints da API (ex: cadastrar agendamentos ou 
 
 ---
 
-## Como Gerar ou Rotacionar uma Chave de API no Website?
+## Como Gerar ou Rotacionar uma Chave de API
 
 Para obter a sua credencial ou rotacionar a chave existente, siga o passo a passo no painel do GateIn:
 
 1. **Acesse o Sistema:** Faça login na plataforma web do GateIn com sua conta de administrador.
 2. **Navegue até Configurações:** No menu lateral esquerdo, clique em **Configurações**.
 3. **Selecione a aba Integrações:** Clique na aba ou seção de **Chaves de API** / **Integrações**.
-4. **Gerar/Rotacionar Chave:** Clique no botão **Gerar Chave** ou **Rotacionar Chave**. *Nota: Cada empresa possui apenas uma única chave de API ativa por vez. Ao gerar uma nova chave, a anterior é automaticamente revogada e invalidada.*
+4. **Gerar/Rotacionar Chave:** Clique no botão **Gerar Chave** ou **Rotacionar Chave**. *Nota: Cada empresa possui apenas uma única chave de API activa por vez. Ao gerar uma nova chave, a anterior é automaticamente revogada e invalidada.*
 5. **Copie o Segredo:** A chave será gerada e exibida na tela. **Atenção:** Por motivos de segurança, essa chave só é mostrada uma única vez. Salve-a em um gerenciador de segredos ou cofre seguro antes de fechar a janela.
 
 ---
 
 ## Validando sua Chave via API
 
-Para testar a integração e garantir que sua chave está ativa e configurada corretamente, envie uma requisição para o endpoint `/validate-api-key`:
+Para testar a integração e garantir que sua chave está ativa e configurada corretamente, envie uma requisição para o endpoint `/validate-api-key`.
 
 #### Exemplo em cURL:
 ```bash
@@ -65,3 +67,20 @@ fetch('https://api.gatein.com/api/v1/validate-api-key', {
 .then(data => console.log(data))
 .catch(err => console.error(err));
 ```
+
+### Resposta do endpoint `/validate-api-key`
+
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `success` | `boolean` | `true` em caso de sucesso |
+| `data.type` | `string` | Tipo da empresa: `terminal` ou `trucking` |
+| `data.username` | `string` | Username da empresa no GateIn |
+| `data.name` | `string` | Razão social da empresa |
+| `data.tax_id` | `string` | CNPJ da empresa |
+
+### Erros Comuns
+
+| HTTP | `code` | Causa |
+| :--- | :--- | :--- |
+| `401` | `INVALID_API_KEY_FORMAT` | Chave sem prefixo `sk_live_` ou malformada |
+| `401` | `INVALID_API_KEY` | A `X-API-Key` fornecida é inválida ou foi revogada |

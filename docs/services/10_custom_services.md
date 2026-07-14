@@ -166,6 +166,11 @@ O que você pode oferecer com Serviços Personalizados:
 
 ---
 
-## Protocolo de Autenticação Detalhado
+## Erros Comuns
 
-Para a documentação técnica completa do handshake JWT — algoritmo, formato do token, tabela de erros — veja a seção **Autenticação → Autenticação de Serviços (JWT Handshake)**.
+| HTTP | Code | Causa |
+| :--- | :--- | :--- |
+| `401` | `EXPIRED_TOKEN` | Token gerado há mais de 3 minutos |
+| `401` | `INVALID_TOKEN` | Token malformado ou assinatura inválida |
+| `401` | `USER_NOT_FOUND` | Motorista referenciado no token não existe mais |
+| `401` | `INVALID_API_KEY` | A `X-API-Key` fornecida é inválida |
