@@ -111,12 +111,6 @@ const config = {
             label: 'Docs',
           },
           {
-            to: '/api',
-            label: 'API Reference',
-            position: 'left',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
             href: 'https://github.com/funchaal/gatein-docs',
             label: 'GitHub',
             position: 'right',
@@ -136,29 +130,8 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Links',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/funchaal/gatein-docs',
@@ -166,7 +139,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} GateIn. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} GateIn. Todos os direitos reservados.`,
       },
       prism: {
         theme: prismThemes.github,

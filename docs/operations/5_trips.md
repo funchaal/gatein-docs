@@ -2,9 +2,28 @@
 sidebar_position: 5
 title: Gestão de Viagens (Trips)
 ---
+
 # Gestão de Viagens (Trips)
 
 O módulo de viagens foi projetado para **Transportadoras, Embarcadores e Operadores de Frota** registrarem e rastrearem a locomoção de cargas entre pontos de coleta (origem) e entrega (destino). As requisições são processadas em lote (batch) para alta performance.
+
+---
+
+## Status da Viagem
+
+O campo `status` reflete o ciclo de vida de cada viagem:
+
+| Status | Quando ocorre |
+| :--- | :--- |
+| `PLANNED` | Viagem criada — motorista ainda não iniciou |
+| `IN_TRANSIT` | Viagem iniciada — motorista a caminho do destino |
+| `CHECKED_IN` | Check-in realizado no terminal de destino. **Atribuído automaticamente** pelo servidor GateIn ao confirmar o check-in |
+| `ON_GOING` | Motorista passou pela cancela e está em operação no terminal. Atribuído pelo servidor do terminal via `PUT /api/v1/trips` ao confirmar a passagem |
+| `COMPLETED` | Operação encerrada |
+| `DELETED` | Viagem cancelada/removida |
+
+> [!NOTE]
+> Assim como nos agendamentos, o status `CHECKED_IN` é definido automaticamente. Já o `ON_GOING` deve ser aplicado pelo servidor do terminal após confirmar que o veículo passou pela cancela.
 
 ---
 
@@ -26,7 +45,7 @@ O módulo de viagens foi projetado para **Transportadoras, Embarcadores e Operad
 | Campo | Tipo | Descrição |
 | :--- | :--- | :--- |
 | `*ref` | `string` | Referência única da viagem no seu TMS/ERP (ex: número do MDF-e ou CT-e). Usada em todas as consultas e atualizações |
-| `*layout_ref` | `string` | Código do layout dinâmico associado |
+| `*layout_ref` | `string` | Código do layout dinâmico de **viagem** (card e modal) associado. Define como a viagem é exibida no app do motorista |
 | `vehicle_plate` | `string` | Placa do caminhão/carreta |
 | `summary` | `string` | Observações ou detalhes adicionais da rota |
 | `start_time` | `string` ISO-8601 | Início previsto da viagem |
@@ -173,7 +192,8 @@ print(response.json())
     "ref": "TR-MDFE-4819",
     "trip": {
       "vehicle_plate": "NEW3A21",
-      "summary": "Placa de cavalo mecânico substituída por pane mecânica."
+      "status": "ON_GOING",
+      "summary": "Veículo passou pela cancela do terminal."
     }
   }
 ]
@@ -217,39 +237,18 @@ Altera o status da viagem para `DELETED`. Exemplo de envio em lote:
       "found": true,
       "data": {
         "trip": {
-          "id": "f5e92716-11f8-4cb3-a5c6-c9a7d36d8f1e",
-          "trucking_company_id": "b3e9281a-12f8-4cb3-a5c6-d9a7e36d8f92",
           "ref": "TR-MDFE-4819",
           "layout_ref": "layout-mineracao-v2",
-          "driver_id": "d1d82761-b7e1-4560-84c4-f2a8c17df20b",
-          "vehicle_plate": "NEW3A21",
-          "status": "CREATED",
-          "summary": "Transporte de minério de ferro",
-          "schedule_start_time": "2026-07-16T06:00:00Z",
-          "schedule_end_time": "2026-07-16T18:00:00Z",
-          "schedule_start_tolerance": 30,
-          "schedule_end_tolerance": 60,
-          "custom_data": {},
-          "origin_street": "Avenida Mineral",
-          "origin_number": "1000",
-          "origin_city": "Brumadinho",
-          "origin_state": "MG",
-          "origin_country": "BR",
-          "origin_zip": "35460000",
-          "origin_lat": -20.1219,
-          "origin_lng": -44.1997,
-          "destiny_street": "Avenida Portuária",
-          "destiny_number": "S/N",
-          "destiny_city": "Vitória",
-          "destiny_state": "ES",
-          "destiny_country": "BR",
-          "destiny_zip": "29000000",
-          "destiny_lat": -20.3184,
-          "destiny_lng": -40.2925,
+          "vehicle_plate": "BRA2E19",
+          "status": "CHECKED_IN",
           "from_location": "Sede Mineradora Brumadinho",
           "to_location": "Porto de Tubarão",
-          "created_at": "2026-07-12T12:10:00Z",
-          "updated_at": "2026-07-12T12:18:14Z"
+          "origin_city": "Brumadinho",
+          "origin_state": "MG",
+          "destiny_city": "Vitória",
+          "destiny_state": "ES",
+          "created_at": "2026-07-16T05:00:00Z",
+          "updated_at": "2026-07-16T06:30:00Z"
         },
         "driver": {
           "tax_id": "98765432109",
@@ -257,8 +256,8 @@ Altera o status da viagem para `DELETED`. Exemplo de envio em lote:
           "driver_license_category": "D"
         },
         "logs": [
-          { "event": "updated", "message": "Viagem atualizada via API.", "created_at": "2026-07-12T12:18:14.000000" },
-          { "event": "created", "message": "Viagem criada via API.", "created_at": "2026-07-12T12:10:00.000000" }
+          { "event": "checked_in", "message": "Check-in realizado no terminal.", "created_at": "2026-07-16T06:30:00.000000" },
+          { "event": "created", "message": "Viagem criada via API.", "created_at": "2026-07-16T05:00:00.000000" }
         ]
       }
     }

@@ -2,9 +2,27 @@
 sidebar_position: 4
 title: Gestão de Agendamentos (Appointments)
 ---
+
 # Gestão de Agendamentos (Appointments)
 
 O módulo de agendamentos foi feito sob medida para **Terminais logísticos e Portuários** gerenciarem o fluxo planejado de entradas e saídas de motoristas e veículos. Todas as operações são feitas em lote (batch) para otimizar a performance da rede e o processamento de dados.
+
+---
+
+## Status do Agendamento
+
+O campo `status` reflete o ciclo de vida de cada agendamento ao longo da operação:
+
+| Status | Quando ocorre |
+| :--- | :--- |
+| `SCHEDULED` | Agendamento criado — aguardando o motorista |
+| `CHECKED_IN` | Check-in realizado pelo motorista no app. **Atribuído automaticamente** pelo servidor GateIn assim que o check-in é confirmado pelo servidor do terminal |
+| `ON_GOING` | Motorista passou pela cancela e está em operação. Atribuído pelo servidor do terminal via API ao confirmar a passagem física |
+| `COMPLETED` | Operação encerrada |
+| `DELETED` | Agendamento cancelado/removido |
+
+> [!NOTE]
+> O status `CHECKED_IN` é definido automaticamente pelo GateIn assim que o handshake de check-in é confirmado. Já o status `ON_GOING` é responsabilidade do servidor do terminal — ele deve chamar o endpoint `PUT /api/v1/appointments` para atualizar o status após detectar a passagem do veículo pela cancela.
 
 ---
 
@@ -27,42 +45,41 @@ O módulo de agendamentos foi feito sob medida para **Terminais logísticos e Po
 | Campo | Tipo | Descrição |
 | :--- | :--- | :--- |
 | `*ref` | `string` | Chave única no seu sistema de origem (ex: ID da Ordem de Carga). Usada para buscar, alterar ou remover o registro |
-| `*layout_ref` | `string` | ID do layout dinâmico a aplicar a este agendamento |
+| `*layout_ref` | `string` | ID do layout de **agendamento** (card e modal) a aplicar a este agendamento. Configura como o agendamento é exibido no app do motorista |
 | `schedule_start_time` | `string` ISO-8601 | Horário inicial agendado (ex: `2026-07-15T08:00:00Z`) |
 | `schedule_end_time` | `string` ISO-8601 | Horário limite final agendado (ex: `2026-07-15T12:00:00Z`) |
 | `schedule_start_tolerance` | `integer` | Margem de tolerância em minutos antes do início (default: `0`) |
 | `schedule_end_tolerance` | `integer` | Margem de tolerância em minutos após o término (default: `0`) |
 | `vehicle_plate` | `string` | Placa do cavalo mecânico ou veículo principal |
 | `summary` | `string` | Observações ou notas textuais sobre a operação |
-| `custom_data` | `object` | Campos adicionais chave-valor para armazenamento livre |
+| `custom_data` | `object` | Campos adicionais chave-valor para armazenamento livre e exibição no app |
 
+---
 
-### Customização Dinâmica de Layout (`layout_ref`)
+## Layout de Agendamento vs. Layout de Ticket
 
-A propriedade `layout_ref` vincula o agendamento a um modelo de layout dinâmico cadastrado, ditando como o GateIn App e o painel web renderizam o agendamento e o **Ticket digital de acesso** do motorista.
+> [!IMPORTANT]
+> O `layout_ref` do agendamento e o `layout_ref` do ticket são **conceitos diferentes**:
+>
+> - **`layout_ref` do Appointment** — controla como o agendamento aparece para o motorista no app (card de listagem, modal de detalhes). É definido aqui, na criação do agendamento.
+> - **`layout_ref` do Ticket** — controla como o ticket digital é renderizado após o check-in. É definido pelo servidor do terminal na resposta do handshake de check-in (ou via API de Tickets).
+>
+> Os layouts são configurados separadamente no painel web: **Appointment Layouts** e **Ticket Layouts**.
 
-#### Elementos do Card / Modal (`card_layout` / `modal_layout`)
+---
+
+## Customização Dinâmica de Layout (`layout_ref`)
+
+A propriedade `layout_ref` vincula o agendamento a um modelo de layout dinâmico cadastrado, ditando como o GateIn App renderiza o card e o modal de detalhes do agendamento para o motorista.
+
+### Elementos do Card / Modal (`card_layout` / `modal_layout`)
 
 | Elemento | Descrição |
 | :--- | :--- |
 | `section` | Título de seção agrupador |
-| `field` | Linha com rótulo + valor extraído dinamicamente (ex: `driver.name`) |
+| `field` | Linha com rótulo + valor extraído dinamicamente (ex: `driver.name`, `custom_data.nota_fiscal`) |
 | `alert` | Bloco de destaque com cores (`purple`, `blue`, `green`, `yellow`, `red`, `gray`) e ícones |
 | `qrcode` | Código QR renderizado a partir de uma chave de dados |
-
-#### Elementos do Ticket Digital (`TicketLayout`)
-
-| Elemento | Descrição |
-| :--- | :--- |
-| `divider` | Linha separadora horizontal |
-| `field` | Linha chave-valor (rótulo em cinza, valor em negrito) |
-| `section` | Divisor com título de agrupamento em caixa alta |
-| `tag_container` | Grupo de etiquetas coloridas arredondadas |
-| `attention` | Caixa de alerta com borda e ícone (ex: uso de EPI) |
-| `instruction` | Lista ordenada com bullets numerados para o fluxo do motorista |
-| `text` | Parágrafo de texto livre (avisos, regras, informações legais) |
-| `highlight` / `highlight_grid` | Dado em destaque com fonte grande (ex: número da baia, peso na balança) |
-
 
 ---
 
@@ -158,7 +175,6 @@ print(response.json())
 | `ref` | Chave de referência externa — usada como identificador |
 | `user_tax_id` | Identidade do motorista vinculado |
 
-
 ### Payload de Exemplo
 ```json
 [
@@ -166,11 +182,15 @@ print(response.json())
     "ref": "AG-2026-009",
     "appointment": {
       "vehicle_plate": "XYZ9Z99",
-      "summary": "Placa de cavalo mecânico atualizada por mudança de frota."
+      "status": "ON_GOING",
+      "summary": "Veículo passou pela cancela às 14h32."
     }
   }
 ]
 ```
+
+> [!TIP]
+> Use `"status": "ON_GOING"` ao detectar a passagem do veículo pela cancela. O GateIn aplica `CHECKED_IN` automaticamente no check-in — o `ON_GOING` fica a cargo do servidor do terminal.
 
 ---
 
@@ -213,29 +233,27 @@ Altera o status do agendamento para `DELETED` e insere logs de auditoria. Exempl
           "id": "c1f72782-b7e1-4560-84c4-f2a8c17df20b",
           "terminal_id": "e3a817a9-17d2-4e92-bc91-2a1c8f1e56ab",
           "ref": "AG-2026-009",
-          "layout_ref": "3",
+          "layout_ref": "layout-graos-v1",
           "user_tax_id": "12345678909",
-          "status": "DELETED",
-          "summary": "Agendamento cancelado",
-          "vehicle_plate": "XYZ9Z99",
-          "schedule_start_time": "2026-07-12T10:00:00Z",
-          "schedule_end_time": "2026-07-12T12:00:00Z",
+          "status": "CHECKED_IN",
+          "summary": "Descarregamento de Soja Orgânica",
+          "vehicle_plate": "ABC1D23",
+          "schedule_start_time": "2026-07-15T14:00:00Z",
+          "schedule_end_time": "2026-07-15T16:00:00Z",
           "schedule_start_tolerance": 30,
-          "schedule_end_tolerance": 30,
-          "custom_data": {
-            "ticket_acesso": "TC-90182"
-          },
-          "created_at": "2026-07-12T09:00:00Z",
-          "updated_at": "2026-07-12T10:15:00Z"
+          "schedule_end_tolerance": 60,
+          "custom_data": { "nota_fiscal": "45982" },
+          "created_at": "2026-07-15T10:00:00Z",
+          "updated_at": "2026-07-15T14:05:00Z"
         },
         "driver": {
           "tax_id": "12345678909",
-          "driver_license_number": "902817265",
-          "driver_license_category": "D"
+          "driver_license_number": "9876543210",
+          "driver_license_category": "E"
         },
         "logs": [
-          { "event": "deleted", "message": "Agendamento deletado/cancelado.", "created_at": "2026-07-12T10:15:00.000000" },
-          { "event": "created", "message": "Agendamento criado via API.", "created_at": "2026-07-12T09:00:00.000000" }
+          { "event": "checked_in", "message": "Check-in realizado.", "created_at": "2026-07-15T14:05:00.000000" },
+          { "event": "created", "message": "Agendamento criado via API.", "created_at": "2026-07-15T10:00:00.000000" }
         ]
       }
     }

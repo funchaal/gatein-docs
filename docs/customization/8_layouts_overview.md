@@ -1,63 +1,62 @@
 ---
 sidebar_position: 1
-title: Visão Geral da Personalização
+title: Personalização de Layouts
 ---
 
 # Personalização de Layouts
 
 Uma das funcionalidades mais poderosas do GateIn é a capacidade de o terminal ou transportadora definir **como as informações serão exibidas para o motorista no aplicativo**. Isso é feito diretamente no painel web, sem necessidade de desenvolvimento.
 
-Cada agendamento (Appointment) e viagem (Trip) tem um `layout_ref` — uma referência para um modelo de layout cadastrado no painel. Esse layout define exatamente o que aparece na tela do motorista, do card de listagem até o ticket digital gerado no check-in.
+Cada agendamento (Appointment) e viagem (Trip) tem um `layout_ref` — uma referência para um modelo de layout cadastrado no painel. Esse layout define exatamente o que aparece na tela do motorista, do card de listagem até o modal de detalhes.
+
+Os **tickets digitais** têm seu próprio `layout_ref` separado, configurado em **Ticket Layouts** — um conjunto de layouts distinto dos layouts de agendamento.
 
 ---
 
-## Por que isso importa?
+## Tipos de Layout
 
-Terminais têm operações muito diferentes entre si. Um terminal de grãos precisa mostrar dados diferentes de um terminal de contêineres. Com o sistema de layouts, cada terminal configura sua experiência ideal sem depender de atualizações do app ou do servidor.
-
----
-
-## O que você pode personalizar
-
-### Appointment Card
-O card de listagem de agendamentos — o que o motorista vê na tela principal ao listar seus agendamentos. Você configura o título, subtítulo, tags de status coloridas e linhas de informação no corpo do card.
-
-> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO APPOINTMENT CARD, MOSTRANDO O BUILDER COM CAMPOS DRAG-AND-DROP E O PREVIEW AO LADO]]
-
-### Appointment Details Modal
-Quando o motorista toca em um agendamento, abre o modal de detalhes. Aqui você configura seções, campos chave-valor, alertas coloridos com ícones e até um QR Code gerado dinamicamente a partir dos dados do agendamento.
-
-> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO APPOINTMENT MODAL, COM SEÇÕES EXPANDIDAS E PREVIEW AO VIVO DO MODAL]]
-
-### Trip Card
-Igual ao Appointment Card, mas para viagens. O card de viagem mostra o resumo da rota com origem e destino, além de campos customizáveis pelo operador.
-
-> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO TRIP CARD]]
-
-### Trip Details Modal
-O modal de detalhes da viagem, também personalizável com seções, campos, alertas e dados de rota.
-
-> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO TRIP MODAL]]
-
-### Ticket Digital
-O ticket gerado no momento do check-in. É o "comprovante digital" que substitui o ticket impresso. Você configura todas as informações que devem constar no ticket, com suporte a campos, seções, tags coloridas, caixas de atenção, instruções numeradas e dados em destaque.
-
-> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO TICKET LAYOUT, COM O TICKET RENDERIZADO AO LADO]]
+| Tipo | Onde configurar | O que controla |
+| :--- | :--- | :--- |
+| **Appointment Layout** | Painel → Appointment Layouts | Card e modal de agendamentos |
+| **Ticket Layout** | Painel → Ticket Layouts | Ticket digital gerado no check-in |
+| **Trip Layout** | Painel → Trip Layouts | Card e modal de viagens (transportadoras) |
 
 ---
 
-## Elementos disponíveis por contexto
+## Appointment Card e Modal
 
-### Card e Modal de Agendamento / Viagem
+### O Card
+O card de listagem de agendamentos é o que o motorista vê ao abrir a tela de agendamentos. Você configura:
+- **Header**: título principal do card (ex: referência do agendamento ou tipo de operação)
+- **Sub-header**: informação secundária (ex: nome da transportadora)
+- **Status tags**: etiquetas coloridas que indicam o status visualmente
+- **Body rows**: linhas de informação adicionais (ex: placa, horário)
+
+> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO APPOINTMENT CARD, COM O BUILDER À ESQUERDA E O PREVIEW DO CARD AO LADO DIREITO]]
+
+### O Modal de Detalhes
+Quando o motorista toca no card, abre o modal com todas as informações detalhadas. Você configura seções, campos, alertas coloridos e QR Codes.
+
+> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO APPOINTMENT MODAL, COM SEÇÕES EXPANDIDAS E O PREVIEW DO MODAL AO LADO]]
+
+### Elementos disponíveis no Card e Modal
 
 | Elemento | Descrição |
 | :--- | :--- |
 | `section` | Título de seção agrupador |
-| `field` | Linha com rótulo + valor extraído dinamicamente dos dados do agendamento |
+| `field` | Linha com rótulo + valor extraído dinamicamente dos dados (ex: `custom_data.nota_fiscal`) |
 | `alert` | Bloco de destaque com cores (`purple`, `blue`, `green`, `yellow`, `red`, `gray`) e ícones |
 | `qrcode` | QR Code renderizado a partir de qualquer campo dos dados |
 
-### Ticket Digital
+---
+
+## Ticket Layout
+
+O ticket digital é o comprovante de acesso gerado no check-in. Você define exatamente o que deve constar, com suporte a mais tipos de elementos do que o card/modal.
+
+> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO TICKET LAYOUT, COM O PREVIEW DO TICKET RENDERIZADO AO LADO DIREITO, MOSTRANDO CAMPOS, SEÇÕES E TAGS]]
+
+### Elementos do Ticket
 
 | Elemento | Descrição |
 | :--- | :--- |
@@ -72,11 +71,29 @@ O ticket gerado no momento do check-in. É o "comprovante digital" que substitui
 
 ---
 
-## Como funciona na prática?
+## Trip Card e Modal
 
-No painel web, você vai até a seção de layouts (Appointments ou Trips) e cria um novo layout. Cada layout tem um `ref` (identificador único) que você vai usar no campo `layout_ref` ao criar agendamentos e viagens via API.
+Idêntico ao Appointment Layout, mas para viagens — e disponível apenas para transportadoras. O motorista vê o card com o resumo da rota (origem → destino) e, ao tocar, abre o modal com todos os detalhes configurados.
 
-```json title="Exemplo: passando layout_ref ao criar um agendamento"
+> [[PRINT DA TELA DO PAINEL WEB — EDITOR DO TRIP CARD, COM O PREVIEW DO CARD DE VIAGEM]]
+
+---
+
+## Dados Dinâmicos
+
+Os campos dos layouts referenciam **qualquer chave presente nos dados do agendamento ou viagem**, incluindo o objeto `custom_data`. Isso significa que você pode enviar dados específicos da sua operação via API e configurar o app para exibi-los com os rótulos que você definir.
+
+Exemplo: se você envia `custom_data: { "area_coleta": "Quadra C", "nota_fiscal": "45982" }`, pode criar campos no layout que mostram esses valores ao motorista.
+
+> [[PRINT DA TELA DO PAINEL WEB — CAMPO MAPEADO PARA custom_data.area_coleta COM O PREVIEW AO LADO MOSTRANDO O VALOR RENDERIZADO]]
+
+---
+
+## Como vincular um layout a um agendamento/viagem
+
+No painel, cada layout tem um identificador `ref` (ex: `layout-graos-v1`). Ao criar agendamentos ou viagens via API, você passa esse identificador no campo `layout_ref`:
+
+```json title="Vinculando layout ao criar um agendamento"
 {
   "appointment": {
     "ref": "AG-2026-009",
@@ -85,17 +102,5 @@ No painel web, você vai até a seção de layouts (Appointments ou Trips) e cri
 }
 ```
 
-O app vai buscar esse layout e renderizar a tela do motorista exatamente como você configurou.
-
 > [!TIP]
-> Você pode ter múltiplos layouts para diferentes tipos de operação. Por exemplo: `layout-graos`, `layout-containers`, `layout-minerio`. Cada agendamento referencia o layout correto para sua operação.
-
----
-
-## Dados dinâmicos nos campos
-
-Os campos dos layouts podem referenciar **qualquer chave presente nos dados do agendamento ou viagem**, incluindo o objeto `custom_data`. Isso significa que você pode enviar dados específicos da sua operação via API e configurar o app para exibi-los exatamente onde e como quiser.
-
-Exemplo: se você envia `custom_data: { "nota_fiscal": "45982", "area_coleta": "Quadra C" }`, pode criar campos no layout que mostram esses valores ao motorista com os rótulos que você definiu.
-
-> [[PRINT DA TELA DO PAINEL WEB — CAMPO MAPEADO PARA custom_data.area_coleta COM PREVIEW AO LADO]]
+> Você pode ter múltiplos layouts para diferentes tipos de operação: `layout-graos`, `layout-containers`, `layout-minerio`. Cada agendamento referencia o layout correto para sua operação.
