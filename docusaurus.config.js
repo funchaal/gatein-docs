@@ -142,7 +142,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} GateIn. Todos os direitos reservados.`,
       },
       prism: {
-        theme: prismThemes.github,
+        theme: prismThemes.dracula,
         darkTheme: prismThemes.dracula,
       },
     }),
