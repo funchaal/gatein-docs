@@ -1,4 +1,6 @@
 ---
+id: tickets
+slug: /operations/tickets
 sidebar_position: 6
 title: Tickets Digitais
 ---

@@ -1,4 +1,6 @@
 ---
+id: checkin-antecipado
+slug: /checkin-antecipado
 sidebar_position: 9
 title: Check-in Antecipado
 ---

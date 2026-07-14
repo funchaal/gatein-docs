@@ -1,4 +1,6 @@
 ---
+id: comunicados
+slug: /comunicados
 sidebar_position: 10
 title: Comunicados (Announcements)
 ---

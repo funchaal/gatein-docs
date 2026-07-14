@@ -1,4 +1,6 @@
 ---
+id: geofence
+slug: /geofence
 sidebar_position: 8
 title: Geofence
 ---
