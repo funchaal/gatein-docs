@@ -22,7 +22,8 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "redocusaurus": "^2.5.2"
+    "redocusaurus": "^2.5.2",
+    "remark-github-admonitions-to-directives": "^2.1.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.2",
