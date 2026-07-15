@@ -85,7 +85,7 @@ const config = {
           },
         ],
         theme: {
-          primaryColor: '#1890ff',
+          primaryColor: '#f97316',
         },
       },
     ],
@@ -101,10 +101,6 @@ const config = {
       },
       navbar: {
         title: 'Gatein Docs',
-        logo: {
-          alt: 'GateIn Logo',
-          src: 'img/logo.svg',
-        },
         items: [
           {
             type: 'docSidebar',
