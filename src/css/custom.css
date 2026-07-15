@@ -40,3 +40,29 @@
     padding-left: 2rem;
   }
 }
+
+/* Custom styling for sidebar sub-items (Level 2+) to differentiate from top-level options */
+.menu__list .menu__list .menu__link {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+  border-left: 1.5px solid var(--ifm-color-emphasis-200);
+  border-radius: 0;
+  padding-left: 0.85rem;
+  margin-left: 0.25rem;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Hover state for sub-items */
+.menu__list .menu__list .menu__link:hover {
+  color: var(--ifm-color-primary);
+  border-left-color: var(--ifm-color-primary);
+}
+
+/* Active state for sub-items */
+.menu__list .menu__list .menu__link--active {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  border-left-color: var(--ifm-color-primary);
+  border-left-width: 2px;
+  padding-left: 0.82rem; /* adjust padding to compensate for thicker border */
+}
