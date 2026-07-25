@@ -46,11 +46,11 @@ O campo `status` reflete o ciclo de vida de cada agendamento ao longo da operaç
 | :--- | :--- | :--- |
 | `*ref` | `string` | Chave única no seu sistema de origem (ex: ID da Ordem de Carga). Usada para buscar, alterar ou remover o registro |
 | `*layout_ref` | `string` | ID do layout de **agendamento** (card e modal) a aplicar a este agendamento. Configura como o agendamento é exibido no app do motorista |
-| `schedule_start_time` | `string` ISO-8601 | Horário inicial agendado (ex: `2026-07-15T08:00:00Z`) |
-| `schedule_end_time` | `string` ISO-8601 | Horário limite final agendado (ex: `2026-07-15T12:00:00Z`) |
-| `schedule_start_tolerance` | `integer` | Margem de tolerância em minutos antes do início (default: `0`) |
-| `schedule_end_tolerance` | `integer` | Margem de tolerância em minutos após o término (default: `0`) |
-| `vehicle_plate` | `string` | Placa do cavalo mecânico ou veículo principal |
+| `window_start` | `string` ISO-8601 | Horário inicial agendado (ex: `2026-07-15T08:00:00Z`) |
+| `window_end` | `string` ISO-8601 | Horário limite final agendado (ex: `2026-07-15T12:00:00Z`) |
+| `start_tolerance` | `integer` | Margem de tolerância em minutos antes do início (default: `0`) |
+| `end_tolerance` | `integer` | Margem de tolerância em minutos após o término (default: `0`) |
+| `license_plate` | `string` | Placa do cavalo mecânico ou veículo principal |
 | `summary` | `string` | Observações ou notas textuais sobre a operação |
 | `custom_data` | `object` | Campos adicionais chave-valor para armazenamento livre e exibição no app |
 
@@ -109,12 +109,12 @@ A propriedade `layout_ref` vincula o agendamento a um modelo de layout dinâmico
     "appointment": {
       "ref": "AG-2026-009",
       "layout_ref": "layout-graos-v1",
-      "schedule_start_time": "2026-07-15T14:00:00Z",
-      "schedule_end_time": "2026-07-15T16:00:00Z",
-      "schedule_start_tolerance": 30,
-      "schedule_end_tolerance": 60,
+      "window_start": "2026-07-15T14:00:00Z",
+      "window_end": "2026-07-15T16:00:00Z",
+      "start_tolerance": 30,
+      "end_tolerance": 60,
       "summary": "Descarregamento de Soja Orgânica",
-      "vehicle_plate": "ABC1D23",
+      "license_plate": "ABC1D23",
       "custom_data": {
         "nota_fiscal": "45982",
         "peso_estimado_kg": 42000
@@ -146,9 +146,9 @@ payload = [
         "appointment": {
             "ref": "AG-2026-009",
             "layout_ref": "layout-graos-v1",
-            "schedule_start_time": "2026-07-15T14:00:00Z",
-            "schedule_end_time": "2026-07-15T16:00:00Z",
-            "vehicle_plate": "ABC1D23"
+            "window_start": "2026-07-15T14:00:00Z",
+            "window_end": "2026-07-15T16:00:00Z",
+            "license_plate": "ABC1D23"
         }
     }
 ]
@@ -181,7 +181,7 @@ print(response.json())
   {
     "ref": "AG-2026-009",
     "appointment": {
-      "vehicle_plate": "XYZ9Z99",
+      "license_plate": "XYZ9Z99",
       "status": "ON_GOING",
       "summary": "Veículo passou pela cancela às 14h32."
     }
@@ -237,11 +237,11 @@ Altera o status do agendamento para `DELETED` e insere logs de auditoria. Exempl
           "user_tax_id": "12345678909",
           "status": "CHECKED_IN",
           "summary": "Descarregamento de Soja Orgânica",
-          "vehicle_plate": "ABC1D23",
-          "schedule_start_time": "2026-07-15T14:00:00Z",
-          "schedule_end_time": "2026-07-15T16:00:00Z",
-          "schedule_start_tolerance": 30,
-          "schedule_end_tolerance": 60,
+          "license_plate": "ABC1D23",
+          "window_start": "2026-07-15T14:00:00Z",
+          "window_end": "2026-07-15T16:00:00Z",
+          "start_tolerance": 30,
+          "end_tolerance": 60,
           "custom_data": { "nota_fiscal": "45982" },
           "created_at": "2026-07-15T10:00:00Z",
           "updated_at": "2026-07-15T14:05:00Z"

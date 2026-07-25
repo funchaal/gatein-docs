@@ -46,12 +46,12 @@ O campo `status` reflete o ciclo de vida de cada viagem:
 | :--- | :--- | :--- |
 | `*ref` | `string` | Referência única da viagem no seu TMS/ERP (ex: número do MDF-e ou CT-e). Usada em todas as consultas e atualizações |
 | `*layout_ref` | `string` | Código do layout dinâmico de **viagem** (card e modal) associado. Define como a viagem é exibida no app do motorista |
-| `vehicle_plate` | `string` | Placa do caminhão/carreta |
+| `license_plate` | `string` | Placa do caminhão/carreta |
 | `summary` | `string` | Observações ou detalhes adicionais da rota |
-| `start_time` | `string` ISO-8601 | Início previsto da viagem |
-| `end_time` | `string` ISO-8601 | Término previsto |
-| `schedule_start_tolerance` | `integer` | Margem de tolerância em minutos antes do início (default: `0`) |
-| `schedule_end_tolerance` | `integer` | Margem de tolerância em minutos após o término (default: `0`) |
+| `window_start` | `string` ISO-8601 | Início previsto da viagem |
+| `window_end` | `string` ISO-8601 | Término previsto |
+| `start_tolerance` | `integer` | Margem de tolerância em minutos antes do início (default: `0`) |
+| `end_tolerance` | `integer` | Margem de tolerância em minutos após o término (default: `0`) |
 | `custom_data` | `object` | Metadados dinâmicos estruturados da viagem |
 
 ### Dados Geográficos de Origem
@@ -109,11 +109,11 @@ O campo `status` reflete o ciclo de vida de cada viagem:
     "trip": {
       "ref": "TR-MDFE-4819",
       "layout_ref": "layout-mineracao-v2",
-      "vehicle_plate": "BRA2E19",
-      "start_time": "2026-07-16T06:00:00Z",
-      "end_time": "2026-07-16T18:00:00Z",
-      "schedule_start_tolerance": 30,
-      "schedule_end_tolerance": 60,
+      "license_plate": "BRA2E19",
+      "window_start": "2026-07-16T06:00:00Z",
+      "window_end": "2026-07-16T18:00:00Z",
+      "start_tolerance": 30,
+      "end_tolerance": 60,
       "from_location": "Sede Mineradora Brumadinho",
       "origin_city": "Brumadinho",
       "origin_state": "MG",
@@ -140,7 +140,7 @@ O campo `status` reflete o ciclo de vida de cada viagem:
 curl -X POST "https://api.gatein.com/api/v1/trips" \
   -H "X-API-Key: sk_live_suachave" \
   -H "Content-Type: application/json" \
-  -d '[{"driver":{"tax_id":"98765432109","driver_license_number":"1234567890","license_category":"D"},"trip":{"ref":"TR-MDFE-4819","layout_ref":"layout-mineracao-v2","vehicle_plate":"BRA2E19"}}]'
+  -d '[{"driver":{"tax_id":"98765432109","driver_license_number":"1234567890","license_category":"D"},"trip":{"ref":"TR-MDFE-4819","layout_ref":"layout-mineracao-v2","license_plate":"BRA2E19"}}]'
 ```
 
 #### Python
@@ -155,7 +155,7 @@ payload = [
         "trip": {
             "ref": "TR-MDFE-4819",
             "layout_ref": "layout-mineracao-v2",
-            "vehicle_plate": "BRA2E19",
+            "license_plate": "BRA2E19",
             "from_location": "Filial SP",
             "to_location": "Porto Santos"
         }
@@ -191,7 +191,7 @@ print(response.json())
   {
     "ref": "TR-MDFE-4819",
     "trip": {
-      "vehicle_plate": "NEW3A21",
+      "license_plate": "NEW3A21",
       "status": "ON_GOING",
       "summary": "Veículo passou pela cancela do terminal."
     }
@@ -239,7 +239,7 @@ Altera o status da viagem para `DELETED`. Exemplo de envio em lote:
         "trip": {
           "ref": "TR-MDFE-4819",
           "layout_ref": "layout-mineracao-v2",
-          "vehicle_plate": "BRA2E19",
+          "license_plate": "BRA2E19",
           "status": "CHECKED_IN",
           "from_location": "Sede Mineradora Brumadinho",
           "to_location": "Porto de Tubarão",

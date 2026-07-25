@@ -844,7 +844,7 @@
             "type": "string",
             "title": "Summary"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -855,7 +855,7 @@
             ],
             "title": "Vehicle Plate"
           },
-          "schedule_start_time": {
+          "window_start": {
             "anyOf": [
               {
                 "type": "string"
@@ -866,7 +866,7 @@
             ],
             "title": "Schedule Start Time"
           },
-          "schedule_end_time": {
+          "window_end": {
             "anyOf": [
               {
                 "type": "string"
@@ -877,7 +877,7 @@
             ],
             "title": "Schedule End Time"
           },
-          "schedule_start_tolerance": {
+          "start_tolerance": {
             "anyOf": [
               {
                 "type": "integer"
@@ -888,7 +888,7 @@
             ],
             "title": "Schedule Start Tolerance"
           },
-          "schedule_end_tolerance": {
+          "end_tolerance": {
             "anyOf": [
               {
                 "type": "integer"
@@ -1111,7 +1111,7 @@
             ],
             "title": "Driver Id"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -1130,7 +1130,7 @@
             "type": "string",
             "title": "Summary"
           },
-          "schedule_start_time": {
+          "window_start": {
             "anyOf": [
               {
                 "type": "string"
@@ -1141,7 +1141,7 @@
             ],
             "title": "Schedule Start Time"
           },
-          "schedule_end_time": {
+          "window_end": {
             "anyOf": [
               {
                 "type": "string"
@@ -2051,7 +2051,7 @@
             "title": "Layout Ref",
             "description": "Refer\u00eancia do layout de agendamento a ser aplicado"
           },
-          "schedule_start_time": {
+          "window_start": {
             "anyOf": [
               {
                 "type": "string",
@@ -2064,7 +2064,7 @@
             "title": "Schedule Start Time",
             "description": "Data/hora de in\u00edcio agendada"
           },
-          "schedule_end_time": {
+          "window_end": {
             "anyOf": [
               {
                 "type": "string",
@@ -2077,13 +2077,13 @@
             "title": "Schedule End Time",
             "description": "Data/hora de t\u00e9rmino agendada"
           },
-          "schedule_start_tolerance": {
+          "start_tolerance": {
             "type": "integer",
             "title": "Schedule Start Tolerance",
             "description": "Toler\u00e2ncia de in\u00edcio em minutos",
             "default": 0
           },
-          "schedule_end_tolerance": {
+          "end_tolerance": {
             "type": "integer",
             "title": "Schedule End Tolerance",
             "description": "Toler\u00e2ncia de t\u00e9rmino em minutos",
@@ -2101,7 +2101,7 @@
             "title": "Summary",
             "description": "Resumo ou observa\u00e7\u00f5es do agendamento"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -2179,7 +2179,7 @@
             ],
             "title": "Summary"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -2190,7 +2190,7 @@
             ],
             "title": "Vehicle Plate"
           },
-          "schedule_start_time": {
+          "window_start": {
             "anyOf": [
               {
                 "type": "string"
@@ -2201,7 +2201,7 @@
             ],
             "title": "Schedule Start Time"
           },
-          "schedule_end_time": {
+          "window_end": {
             "anyOf": [
               {
                 "type": "string"
@@ -2212,11 +2212,11 @@
             ],
             "title": "Schedule End Time"
           },
-          "schedule_start_tolerance": {
+          "start_tolerance": {
             "type": "integer",
             "title": "Schedule Start Tolerance"
           },
-          "schedule_end_tolerance": {
+          "end_tolerance": {
             "type": "integer",
             "title": "Schedule End Tolerance"
           },
@@ -2262,8 +2262,8 @@
           "ref",
           "user_tax_id",
           "status",
-          "schedule_start_tolerance",
-          "schedule_end_tolerance"
+          "start_tolerance",
+          "end_tolerance"
         ],
         "title": "AppointmentDataResponseItem",
         "description": "Item schema representing deep details of an appointment."
@@ -2448,7 +2448,7 @@
             ],
             "title": "Summary"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -2459,7 +2459,7 @@
             ],
             "title": "Vehicle Plate"
           },
-          "schedule_start_time": {
+          "window_start": {
             "anyOf": [
               {
                 "type": "string"
@@ -2470,7 +2470,7 @@
             ],
             "title": "Schedule Start Time"
           },
-          "schedule_end_time": {
+          "window_end": {
             "anyOf": [
               {
                 "type": "string"
@@ -2481,11 +2481,11 @@
             ],
             "title": "Schedule End Time"
           },
-          "schedule_start_tolerance": {
+          "start_tolerance": {
             "type": "integer",
             "title": "Schedule Start Tolerance"
           },
-          "schedule_end_tolerance": {
+          "end_tolerance": {
             "type": "integer",
             "title": "Schedule End Tolerance"
           },
@@ -2514,8 +2514,8 @@
           "id",
           "terminal_id",
           "status",
-          "schedule_start_tolerance",
-          "schedule_end_tolerance",
+          "start_tolerance",
+          "end_tolerance",
           "tickets"
         ],
         "title": "AppointmentResponseSchema",
@@ -5047,7 +5047,7 @@
             "title": "Layout Ref",
             "description": "Refer\u00eancia do layout a ser utilizado"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -5097,13 +5097,13 @@
             "title": "End Time",
             "description": "Data/hora prevista de t\u00e9rmino"
           },
-          "schedule_start_tolerance": {
+          "start_tolerance": {
             "type": "integer",
             "title": "Schedule Start Tolerance",
             "description": "Toler\u00e2ncia de in\u00edcio em minutos",
             "default": 0
           },
-          "schedule_end_tolerance": {
+          "end_tolerance": {
             "type": "integer",
             "title": "Schedule End Tolerance",
             "description": "Toler\u00e2ncia de t\u00e9rmino em minutos",
@@ -5383,7 +5383,7 @@
             ],
             "title": "Driver Id"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -5409,7 +5409,7 @@
             ],
             "title": "Summary"
           },
-          "schedule_start_time": {
+          "window_start": {
             "anyOf": [
               {
                 "type": "string"
@@ -5420,7 +5420,7 @@
             ],
             "title": "Schedule Start Time"
           },
-          "schedule_end_time": {
+          "window_end": {
             "anyOf": [
               {
                 "type": "string"
@@ -5431,11 +5431,11 @@
             ],
             "title": "Schedule End Time"
           },
-          "schedule_start_tolerance": {
+          "start_tolerance": {
             "type": "integer",
             "title": "Schedule Start Tolerance"
           },
-          "schedule_end_tolerance": {
+          "end_tolerance": {
             "type": "integer",
             "title": "Schedule End Tolerance"
           },
@@ -5678,8 +5678,8 @@
           "trucking_company_id",
           "ref",
           "status",
-          "schedule_start_tolerance",
-          "schedule_end_tolerance"
+          "start_tolerance",
+          "end_tolerance"
         ],
         "title": "TripDataResponseItem",
         "description": "Item schema representing deep details of a trip."
@@ -5864,7 +5864,7 @@
             ],
             "title": "Summary"
           },
-          "vehicle_plate": {
+          "license_plate": {
             "anyOf": [
               {
                 "type": "string"
@@ -5875,7 +5875,7 @@
             ],
             "title": "Vehicle Plate"
           },
-          "schedule_start_time": {
+          "window_start": {
             "anyOf": [
               {
                 "type": "string"
@@ -5886,7 +5886,7 @@
             ],
             "title": "Schedule Start Time"
           },
-          "schedule_end_time": {
+          "window_end": {
             "anyOf": [
               {
                 "type": "string"
@@ -5897,11 +5897,11 @@
             ],
             "title": "Schedule End Time"
           },
-          "schedule_start_tolerance": {
+          "start_tolerance": {
             "type": "integer",
             "title": "Schedule Start Tolerance"
           },
-          "schedule_end_tolerance": {
+          "end_tolerance": {
             "type": "integer",
             "title": "Schedule End Tolerance"
           },
@@ -5951,8 +5951,8 @@
           "id",
           "trucking_company_id",
           "status",
-          "schedule_start_tolerance",
-          "schedule_end_tolerance",
+          "start_tolerance",
+          "end_tolerance",
           "origin",
           "destiny"
         ],
@@ -7197,11 +7197,11 @@
     },
     {
       "name": "Appointments",
-      "description": "# Gest\u00e3o de Agendamentos (Appointments)\n\nO m\u00f3dulo de agendamentos foi feito sob medida para **Terminais log\u00edsticos e Portu\u00e1rios** gerenciarem o fluxo planejado de entradas e sa\u00eddas de motoristas e ve\u00edculos. Todas as opera\u00e7\u00f5es s\u00e3o feitas em lote (batch) para otimizar a performance da rede e o processamento de dados.\n\n---\n\n## Schemas\n\n### Driver\n\n> [!NOTE]\n> Os campos marcados com `*` s\u00e3o obrigat\u00f3rios.\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*tax_id` | `string` | CPF ou CNPJ do motorista (apenas n\u00fameros, sem pontos ou tra\u00e7o) |\n| `*driver_license_number` | `string` | N\u00famero da CNH |\n| `*license_category` | `string` | Categoria de habilita\u00e7\u00e3o (ex: `C`, `D`, `E`) |\n\n\n### Appointment\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*ref` | `string` | Chave \u00fanica no seu sistema de origem (ex: ID da Ordem de Carga). Usada para buscar, alterar ou remover o registro |\n| `*layout_ref` | `string` | ID do layout din\u00e2mico a aplicar a este agendamento |\n| `schedule_start_time` | `string` ISO-8601 | Hor\u00e1rio inicial agendado (ex: `2026-07-15T08:00:00Z`) |\n| `schedule_end_time` | `string` ISO-8601 | Hor\u00e1rio limite final agendado (ex: `2026-07-15T12:00:00Z`) |\n| `schedule_start_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos antes do in\u00edcio (default: `0`) |\n| `schedule_end_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos ap\u00f3s o t\u00e9rmino (default: `0`) |\n| `vehicle_plate` | `string` | Placa do cavalo mec\u00e2nico ou ve\u00edculo principal |\n| `summary` | `string` | Observa\u00e7\u00f5es ou notas textuais sobre a opera\u00e7\u00e3o |\n| `custom_data` | `object` | Campos adicionais chave-valor para armazenamento livre |\n\n\n### Customiza\u00e7\u00e3o Din\u00e2mica de Layout (`layout_ref`)\n\nA propriedade `layout_ref` vincula o agendamento a um modelo de layout din\u00e2mico cadastrado, ditando como o GateIn App e o painel web renderizam o agendamento e o **Ticket digital de acesso** do motorista.\n\n#### Elementos do Card / Modal (`card_layout` / `modal_layout`)\n\n| Elemento | Descri\u00e7\u00e3o |\n| :--- | :--- |\n| `section` | T\u00edtulo de se\u00e7\u00e3o agrupador |\n| `field` | Linha com r\u00f3tulo + valor extra\u00eddo dinamicamente (ex: `driver.name`) |\n| `alert` | Bloco de destaque com cores (`purple`, `blue`, `green`, `yellow`, `red`, `gray`) e \u00edcones |\n| `qrcode` | C\u00f3digo QR renderizado a partir de uma chave de dados |\n\n#### Elementos do Ticket Digital (`TicketLayout`)\n\n| Elemento | Descri\u00e7\u00e3o |\n| :--- | :--- |\n| `divider` | Linha separadora horizontal |\n| `field` | Linha chave-valor (r\u00f3tulo em cinza, valor em negrito) |\n| `section` | Divisor com t\u00edtulo de agrupamento em caixa alta |\n| `tag_container` | Grupo de etiquetas coloridas arredondadas |\n| `attention` | Caixa de alerta com borda e \u00edcone (ex: uso de EPI) |\n| `instruction` | Lista ordenada com bullets numerados para o fluxo do motorista |\n| `text` | Par\u00e1grafo de texto livre (avisos, regras, informa\u00e7\u00f5es legais) |\n| `highlight` / `highlight_grid` | Dado em destaque com fonte grande (ex: n\u00famero da baia, peso na balan\u00e7a) |\n\n\n---\n\n## Criar Agendamento(s) (POST)\n\n**Endpoint:** `POST /api/v1/appointments` \u2014 **`201 Created`**\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** quanto uma **lista (array) de objetos** para cria\u00e7\u00e3o em lote.\n\n### Regras de Neg\u00f3cio\n\n> **Importante:**\n> * **Fail-Fast (Chaves Duplicadas):** Se algum `ref` j\u00e1 existir, toda a transa\u00e7\u00e3o sofre rollback (`409 Conflict`).\n> * **Fail-Fast (Layout Inv\u00e1lido):** `layout_ref` inexistente retorna `400 Bad Request`.\n> * **Cria\u00e7\u00e3o Inteligente de Motoristas:** Se o `tax_id` n\u00e3o existir, o motorista \u00e9 criado automaticamente. Se j\u00e1 existir, os dados da CNH s\u00e3o atualizados.\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"driver\": {\n      \"tax_id\": \"12345678909\",\n      \"driver_license_number\": \"9876543210\",\n      \"license_category\": \"E\"\n    },\n    \"appointment\": {\n      \"ref\": \"AG-2026-009\",\n      \"layout_ref\": \"layout-graos-v1\",\n      \"schedule_start_time\": \"2026-07-15T14:00:00Z\",\n      \"schedule_end_time\": \"2026-07-15T16:00:00Z\",\n      \"schedule_start_tolerance\": 30,\n      \"schedule_end_tolerance\": 60,\n      \"summary\": \"Descarregamento de Soja Org\u00e2nica\",\n      \"vehicle_plate\": \"ABC1D23\",\n      \"custom_data\": {\n        \"nota_fiscal\": \"45982\",\n        \"peso_estimado_kg\": 42000\n      }\n    }\n  }\n]\n```\n\n### Exemplos de C\u00f3digo\n\n#### cURL\n```bash\ncurl -X POST \"https://api.gatein.com/api/v1/appointments\" \\\n  -H \"X-API-Key: sk_live_suachave\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '[{\"driver\":{\"tax_id\":\"12345678909\",\"driver_license_number\":\"9876543210\",\"license_category\":\"E\"},\"appointment\":{\"ref\":\"AG-2026-009\",\"layout_ref\":\"layout-graos-v1\"}}]'\n```\n\n#### Python\n```python\nimport requests\n\nurl = \"https://api.gatein.com/api/v1/appointments\"\nheaders = {\"X-API-Key\": \"sk_live_suachave\", \"Content-Type\": \"application/json\"}\npayload = [\n    {\n        \"driver\": {\"tax_id\": \"12345678909\", \"driver_license_number\": \"9876543210\", \"license_category\": \"E\"},\n        \"appointment\": {\n            \"ref\": \"AG-2026-009\",\n            \"layout_ref\": \"layout-graos-v1\",\n            \"schedule_start_time\": \"2026-07-15T14:00:00Z\",\n            \"schedule_end_time\": \"2026-07-15T16:00:00Z\",\n            \"vehicle_plate\": \"ABC1D23\"\n        }\n    }\n]\n\nresponse = requests.post(url, headers=headers, json=payload)\nprint(response.json())\n```\n\n---\n\n## Atualizar Agendamento(s) (PUT)\n\n**Endpoint:** `PUT /api/v1/appointments`\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** de atualiza\u00e7\u00e3o quanto uma **lista (array) de objetos** para atualiza\u00e7\u00e3o em lote.\n\n### Campos Protegidos (n\u00e3o edit\u00e1veis)\n\n| Campo | Motivo |\n| :--- | :--- |\n| `id` | Chave prim\u00e1ria interna |\n| `terminal_id` | V\u00ednculo de propriedade imut\u00e1vel |\n| `ref` | Chave de refer\u00eancia externa \u2014 usada como identificador |\n| `user_tax_id` | Identidade do motorista vinculado |\n\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"ref\": \"AG-2026-009\",\n    \"appointment\": {\n      \"vehicle_plate\": \"XYZ9Z99\",\n      \"summary\": \"Placa de cavalo mec\u00e2nico atualizada por mudan\u00e7a de frota.\"\n    }\n  }\n]\n```\n\n---\n\n## Cancelar / Deletar Agendamento(s) (DELETE)\n\n**Endpoint:** `DELETE /api/v1/appointments`\n\n> [!NOTE]\n> Este endpoint aceita tanto uma **\u00fanica string** de refer\u00eancia quanto um **array de strings** para cancelamento em lote.\n\nAltera o status do agendamento para `DELETED` e insere logs de auditoria. Exemplo de envio em lote:\n\n```json\n[\"AG-2026-009\", \"AG-2026-010\"]\n```\n\n---\n\n## Consultar Logs e Hist\u00f3rico (GET)\n\n**Endpoint:** `GET /api/v1/appointments/logs`\n\n### Query Parameters\n\n| Par\u00e2metro | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `refs` | `string[]` | Repita o par\u00e2metro para m\u00faltiplos valores: `?refs=AG-2026-009&refs=AG-2026-010` |\n\n\n### Resposta de Exemplo\n```json\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"ref\": \"AG-2026-009\",\n      \"found\": true,\n      \"data\": {\n        \"appointment\": {\n          \"id\": \"c1f72782-b7e1-4560-84c4-f2a8c17df20b\",\n          \"terminal_id\": \"e3a817a9-17d2-4e92-bc91-2a1c8f1e56ab\",\n          \"ref\": \"AG-2026-009\",\n          \"layout_ref\": \"3\",\n          \"user_tax_id\": \"12345678909\",\n          \"status\": \"DELETED\",\n          \"summary\": \"Agendamento cancelado\",\n          \"vehicle_plate\": \"XYZ9Z99\",\n          \"schedule_start_time\": \"2026-07-12T10:00:00Z\",\n          \"schedule_end_time\": \"2026-07-12T12:00:00Z\",\n          \"schedule_start_tolerance\": 30,\n          \"schedule_end_tolerance\": 30,\n          \"custom_data\": {\n            \"ticket_acesso\": \"TC-90182\"\n          },\n          \"created_at\": \"2026-07-12T09:00:00Z\",\n          \"updated_at\": \"2026-07-12T10:15:00Z\"\n        },\n        \"driver\": {\n          \"tax_id\": \"12345678909\",\n          \"driver_license_number\": \"902817265\",\n          \"driver_license_category\": \"D\"\n        },\n        \"logs\": [\n          { \"event\": \"deleted\", \"message\": \"Agendamento deletado/cancelado.\", \"created_at\": \"2026-07-12T10:15:00.000000\" },\n          { \"event\": \"created\", \"message\": \"Agendamento criado via API.\", \"created_at\": \"2026-07-12T09:00:00.000000\" }\n        ]\n      }\n    }\n  ]\n}\n```\n\n---\n\n## Erros Comuns\n\n| HTTP | code | Causa |\n| :--- | :--- | :--- |\n| `400` | `EMPTY_PAYLOAD` | Array vazio enviado no body |\n| `400` | `INVALID_LAYOUT_REF` | `layout_ref` n\u00e3o existe para este terminal |\n| `409` | `DUPLICATE_KEY` | Um ou mais `ref`s j\u00e1 existem no banco |\n| `404` | `REFS_NOT_FOUND` | `ref`s informados no PUT/DELETE n\u00e3o foram encontrados |"
+      "description": "# Gest\u00e3o de Agendamentos (Appointments)\n\nO m\u00f3dulo de agendamentos foi feito sob medida para **Terminais log\u00edsticos e Portu\u00e1rios** gerenciarem o fluxo planejado de entradas e sa\u00eddas de motoristas e ve\u00edculos. Todas as opera\u00e7\u00f5es s\u00e3o feitas em lote (batch) para otimizar a performance da rede e o processamento de dados.\n\n---\n\n## Schemas\n\n### Driver\n\n> [!NOTE]\n> Os campos marcados com `*` s\u00e3o obrigat\u00f3rios.\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*tax_id` | `string` | CPF ou CNPJ do motorista (apenas n\u00fameros, sem pontos ou tra\u00e7o) |\n| `*driver_license_number` | `string` | N\u00famero da CNH |\n| `*license_category` | `string` | Categoria de habilita\u00e7\u00e3o (ex: `C`, `D`, `E`) |\n\n\n### Appointment\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*ref` | `string` | Chave \u00fanica no seu sistema de origem (ex: ID da Ordem de Carga). Usada para buscar, alterar ou remover o registro |\n| `*layout_ref` | `string` | ID do layout din\u00e2mico a aplicar a este agendamento |\n| `window_start` | `string` ISO-8601 | Hor\u00e1rio inicial agendado (ex: `2026-07-15T08:00:00Z`) |\n| `window_end` | `string` ISO-8601 | Hor\u00e1rio limite final agendado (ex: `2026-07-15T12:00:00Z`) |\n| `start_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos antes do in\u00edcio (default: `0`) |\n| `end_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos ap\u00f3s o t\u00e9rmino (default: `0`) |\n| `license_plate` | `string` | Placa do cavalo mec\u00e2nico ou ve\u00edculo principal |\n| `summary` | `string` | Observa\u00e7\u00f5es ou notas textuais sobre a opera\u00e7\u00e3o |\n| `custom_data` | `object` | Campos adicionais chave-valor para armazenamento livre |\n\n\n### Customiza\u00e7\u00e3o Din\u00e2mica de Layout (`layout_ref`)\n\nA propriedade `layout_ref` vincula o agendamento a um modelo de layout din\u00e2mico cadastrado, ditando como o GateIn App e o painel web renderizam o agendamento e o **Ticket digital de acesso** do motorista.\n\n#### Elementos do Card / Modal (`card_layout` / `modal_layout`)\n\n| Elemento | Descri\u00e7\u00e3o |\n| :--- | :--- |\n| `section` | T\u00edtulo de se\u00e7\u00e3o agrupador |\n| `field` | Linha com r\u00f3tulo + valor extra\u00eddo dinamicamente (ex: `driver.name`) |\n| `alert` | Bloco de destaque com cores (`purple`, `blue`, `green`, `yellow`, `red`, `gray`) e \u00edcones |\n| `qrcode` | C\u00f3digo QR renderizado a partir de uma chave de dados |\n\n#### Elementos do Ticket Digital (`TicketLayout`)\n\n| Elemento | Descri\u00e7\u00e3o |\n| :--- | :--- |\n| `divider` | Linha separadora horizontal |\n| `field` | Linha chave-valor (r\u00f3tulo em cinza, valor em negrito) |\n| `section` | Divisor com t\u00edtulo de agrupamento em caixa alta |\n| `tag_container` | Grupo de etiquetas coloridas arredondadas |\n| `attention` | Caixa de alerta com borda e \u00edcone (ex: uso de EPI) |\n| `instruction` | Lista ordenada com bullets numerados para o fluxo do motorista |\n| `text` | Par\u00e1grafo de texto livre (avisos, regras, informa\u00e7\u00f5es legais) |\n| `highlight` / `highlight_grid` | Dado em destaque com fonte grande (ex: n\u00famero da baia, peso na balan\u00e7a) |\n\n\n---\n\n## Criar Agendamento(s) (POST)\n\n**Endpoint:** `POST /api/v1/appointments` \u2014 **`201 Created`**\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** quanto uma **lista (array) de objetos** para cria\u00e7\u00e3o em lote.\n\n### Regras de Neg\u00f3cio\n\n> **Importante:**\n> * **Fail-Fast (Chaves Duplicadas):** Se algum `ref` j\u00e1 existir, toda a transa\u00e7\u00e3o sofre rollback (`409 Conflict`).\n> * **Fail-Fast (Layout Inv\u00e1lido):** `layout_ref` inexistente retorna `400 Bad Request`.\n> * **Cria\u00e7\u00e3o Inteligente de Motoristas:** Se o `tax_id` n\u00e3o existir, o motorista \u00e9 criado automaticamente. Se j\u00e1 existir, os dados da CNH s\u00e3o atualizados.\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"driver\": {\n      \"tax_id\": \"12345678909\",\n      \"driver_license_number\": \"9876543210\",\n      \"license_category\": \"E\"\n    },\n    \"appointment\": {\n      \"ref\": \"AG-2026-009\",\n      \"layout_ref\": \"layout-graos-v1\",\n      \"window_start\": \"2026-07-15T14:00:00Z\",\n      \"window_end\": \"2026-07-15T16:00:00Z\",\n      \"start_tolerance\": 30,\n      \"end_tolerance\": 60,\n      \"summary\": \"Descarregamento de Soja Org\u00e2nica\",\n      \"license_plate\": \"ABC1D23\",\n      \"custom_data\": {\n        \"nota_fiscal\": \"45982\",\n        \"peso_estimado_kg\": 42000\n      }\n    }\n  }\n]\n```\n\n### Exemplos de C\u00f3digo\n\n#### cURL\n```bash\ncurl -X POST \"https://api.gatein.com/api/v1/appointments\" \\\n  -H \"X-API-Key: sk_live_suachave\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '[{\"driver\":{\"tax_id\":\"12345678909\",\"driver_license_number\":\"9876543210\",\"license_category\":\"E\"},\"appointment\":{\"ref\":\"AG-2026-009\",\"layout_ref\":\"layout-graos-v1\"}}]'\n```\n\n#### Python\n```python\nimport requests\n\nurl = \"https://api.gatein.com/api/v1/appointments\"\nheaders = {\"X-API-Key\": \"sk_live_suachave\", \"Content-Type\": \"application/json\"}\npayload = [\n    {\n        \"driver\": {\"tax_id\": \"12345678909\", \"driver_license_number\": \"9876543210\", \"license_category\": \"E\"},\n        \"appointment\": {\n            \"ref\": \"AG-2026-009\",\n            \"layout_ref\": \"layout-graos-v1\",\n            \"window_start\": \"2026-07-15T14:00:00Z\",\n            \"window_end\": \"2026-07-15T16:00:00Z\",\n            \"license_plate\": \"ABC1D23\"\n        }\n    }\n]\n\nresponse = requests.post(url, headers=headers, json=payload)\nprint(response.json())\n```\n\n---\n\n## Atualizar Agendamento(s) (PUT)\n\n**Endpoint:** `PUT /api/v1/appointments`\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** de atualiza\u00e7\u00e3o quanto uma **lista (array) de objetos** para atualiza\u00e7\u00e3o em lote.\n\n### Campos Protegidos (n\u00e3o edit\u00e1veis)\n\n| Campo | Motivo |\n| :--- | :--- |\n| `id` | Chave prim\u00e1ria interna |\n| `terminal_id` | V\u00ednculo de propriedade imut\u00e1vel |\n| `ref` | Chave de refer\u00eancia externa \u2014 usada como identificador |\n| `user_tax_id` | Identidade do motorista vinculado |\n\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"ref\": \"AG-2026-009\",\n    \"appointment\": {\n      \"license_plate\": \"XYZ9Z99\",\n      \"summary\": \"Placa de cavalo mec\u00e2nico atualizada por mudan\u00e7a de frota.\"\n    }\n  }\n]\n```\n\n---\n\n## Cancelar / Deletar Agendamento(s) (DELETE)\n\n**Endpoint:** `DELETE /api/v1/appointments`\n\n> [!NOTE]\n> Este endpoint aceita tanto uma **\u00fanica string** de refer\u00eancia quanto um **array de strings** para cancelamento em lote.\n\nAltera o status do agendamento para `DELETED` e insere logs de auditoria. Exemplo de envio em lote:\n\n```json\n[\"AG-2026-009\", \"AG-2026-010\"]\n```\n\n---\n\n## Consultar Logs e Hist\u00f3rico (GET)\n\n**Endpoint:** `GET /api/v1/appointments/logs`\n\n### Query Parameters\n\n| Par\u00e2metro | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `refs` | `string[]` | Repita o par\u00e2metro para m\u00faltiplos valores: `?refs=AG-2026-009&refs=AG-2026-010` |\n\n\n### Resposta de Exemplo\n```json\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"ref\": \"AG-2026-009\",\n      \"found\": true,\n      \"data\": {\n        \"appointment\": {\n          \"id\": \"c1f72782-b7e1-4560-84c4-f2a8c17df20b\",\n          \"terminal_id\": \"e3a817a9-17d2-4e92-bc91-2a1c8f1e56ab\",\n          \"ref\": \"AG-2026-009\",\n          \"layout_ref\": \"3\",\n          \"user_tax_id\": \"12345678909\",\n          \"status\": \"DELETED\",\n          \"summary\": \"Agendamento cancelado\",\n          \"license_plate\": \"XYZ9Z99\",\n          \"window_start\": \"2026-07-12T10:00:00Z\",\n          \"window_end\": \"2026-07-12T12:00:00Z\",\n          \"start_tolerance\": 30,\n          \"end_tolerance\": 30,\n          \"custom_data\": {\n            \"ticket_acesso\": \"TC-90182\"\n          },\n          \"created_at\": \"2026-07-12T09:00:00Z\",\n          \"updated_at\": \"2026-07-12T10:15:00Z\"\n        },\n        \"driver\": {\n          \"tax_id\": \"12345678909\",\n          \"driver_license_number\": \"902817265\",\n          \"driver_license_category\": \"D\"\n        },\n        \"logs\": [\n          { \"event\": \"deleted\", \"message\": \"Agendamento deletado/cancelado.\", \"created_at\": \"2026-07-12T10:15:00.000000\" },\n          { \"event\": \"created\", \"message\": \"Agendamento criado via API.\", \"created_at\": \"2026-07-12T09:00:00.000000\" }\n        ]\n      }\n    }\n  ]\n}\n```\n\n---\n\n## Erros Comuns\n\n| HTTP | code | Causa |\n| :--- | :--- | :--- |\n| `400` | `EMPTY_PAYLOAD` | Array vazio enviado no body |\n| `400` | `INVALID_LAYOUT_REF` | `layout_ref` n\u00e3o existe para este terminal |\n| `409` | `DUPLICATE_KEY` | Um ou mais `ref`s j\u00e1 existem no banco |\n| `404` | `REFS_NOT_FOUND` | `ref`s informados no PUT/DELETE n\u00e3o foram encontrados |"
     },
     {
       "name": "Trips",
-      "description": "# Gest\u00e3o de Viagens (Trips)\n\nO m\u00f3dulo de viagens foi projetado para **Transportadoras, Embarcadores e Operadores de Frota** registrarem e rastrearem a locomo\u00e7\u00e3o de cargas entre pontos de coleta (origem) e entrega (destino). As requisi\u00e7\u00f5es s\u00e3o processadas em lote (batch) para alta performance.\n\n---\n\n## Schemas\n\n### Driver\n\n> [!NOTE]\n> Os campos marcados com `*` s\u00e3o obrigat\u00f3rios.\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*tax_id` | `string` | CPF ou CNPJ do motorista (apenas n\u00fameros) |\n| `*driver_license_number` | `string` | N\u00famero da CNH |\n| `*license_category` | `string` | Categoria de habilita\u00e7\u00e3o (ex: `C`, `D`, `E`) |\n\n### Trip\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*ref` | `string` | Refer\u00eancia \u00fanica da viagem no seu TMS/ERP (ex: n\u00famero do MDF-e ou CT-e). Usada em todas as consultas e atualiza\u00e7\u00f5es |\n| `*layout_ref` | `string` | C\u00f3digo do layout din\u00e2mico associado |\n| `vehicle_plate` | `string` | Placa do caminh\u00e3o/carreta |\n| `summary` | `string` | Observa\u00e7\u00f5es ou detalhes adicionais da rota |\n| `start_time` | `string` ISO-8601 | In\u00edcio previsto da viagem |\n| `end_time` | `string` ISO-8601 | T\u00e9rmino previsto |\n| `schedule_start_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos antes do in\u00edcio (default: `0`) |\n| `schedule_end_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos ap\u00f3s o t\u00e9rmino (default: `0`) |\n| `custom_data` | `object` | Metadados din\u00e2micos estruturados da viagem |\n\n### Dados Geogr\u00e1ficos de Origem\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `from_location` | `string` | Descri\u00e7\u00e3o textual da origem (ex: `F\u00e1brica de Cimento Votorantim`) |\n| `origin_street` | `string` | Nome da rua/avenida |\n| `origin_number` | `string` | N\u00famero predial |\n| `origin_city` | `string` | Cidade |\n| `origin_state` | `string` | Estado (sigla com 2 caracteres, ex: `SP`) |\n| `origin_country` | `string` | Pa\u00eds |\n| `origin_zip` | `string` | CEP (apenas n\u00fameros) |\n| `origin_lat` | `float` | Latitude para geofencing (ex: `-20.1219`) |\n| `origin_lng` | `float` | Longitude para geofencing (ex: `-44.1997`) |\n\n### Dados Geogr\u00e1ficos de Destino\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `to_location` | `string` | Descri\u00e7\u00e3o textual do destino (ex: `Centro de Distribui\u00e7\u00e3o Cajamar`) |\n| `destiny_street` | `string` | Nome da rua/avenida |\n| `destiny_number` | `string` | N\u00famero predial |\n| `destiny_city` | `string` | Cidade |\n| `destiny_state` | `string` | Estado (sigla com 2 caracteres) |\n| `destiny_country` | `string` | Pa\u00eds |\n| `destiny_zip` | `string` | CEP (apenas n\u00fameros) |\n| `destiny_lat` | `float` | Latitude do destino |\n| `destiny_lng` | `float` | Longitude do destino |\n\n---\n\n## Criar Viagem(ns) (POST)\n\n**Endpoint:** `POST /api/v1/trips` \u2014 **`201 Created`**\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** quanto uma **lista (array) de objetos** para cria\u00e7\u00e3o em lote.\n\n### Regras de Neg\u00f3cio\n\n> **Importante:**\n> * **Fail-Fast (Chaves Duplicadas):** Se algum `ref` j\u00e1 existir associado \u00e0 sua empresa, toda a transa\u00e7\u00e3o falha (`409 Conflict`).\n> * **Fail-Fast (Layout Inv\u00e1lido):** Refer\u00eancias de layout inexistentes retornam `400 Bad Request`.\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"driver\": {\n      \"tax_id\": \"98765432109\",\n      \"driver_license_number\": \"1234567890\",\n      \"license_category\": \"D\"\n    },\n    \"trip\": {\n      \"ref\": \"TR-MDFE-4819\",\n      \"layout_ref\": \"layout-mineracao-v2\",\n      \"vehicle_plate\": \"BRA2E19\",\n      \"start_time\": \"2026-07-16T06:00:00Z\",\n      \"end_time\": \"2026-07-16T18:00:00Z\",\n      \"schedule_start_tolerance\": 30,\n      \"schedule_end_tolerance\": 60,\n      \"from_location\": \"Sede Mineradora Brumadinho\",\n      \"origin_city\": \"Brumadinho\",\n      \"origin_state\": \"MG\",\n      \"origin_lat\": -20.1219,\n      \"origin_lng\": -44.1997,\n      \"to_location\": \"Porto de Tubar\u00e3o\",\n      \"destiny_city\": \"Vit\u00f3ria\",\n      \"destiny_state\": \"ES\",\n      \"destiny_lat\": -20.2878,\n      \"destiny_lng\": -40.2882,\n      \"summary\": \"Transporte de Min\u00e9rio de Ferro bruto.\",\n      \"custom_data\": {\n        \"mdf_key\": \"31260712345678901234580010000048191000048198\"\n      }\n    }\n  }\n]\n```\n\n### Exemplos de C\u00f3digo\n\n#### cURL\n```bash\ncurl -X POST \"https://api.gatein.com/api/v1/trips\" \\\n  -H \"X-API-Key: sk_live_suachave\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '[{\"driver\":{\"tax_id\":\"98765432109\",\"driver_license_number\":\"1234567890\",\"license_category\":\"D\"},\"trip\":{\"ref\":\"TR-MDFE-4819\",\"layout_ref\":\"layout-mineracao-v2\",\"vehicle_plate\":\"BRA2E19\"}}]'\n```\n\n#### Python\n```python\nimport requests\n\nurl = \"https://api.gatein.com/api/v1/trips\"\nheaders = {\"X-API-Key\": \"sk_live_suachave\", \"Content-Type\": \"application/json\"}\npayload = [\n    {\n        \"driver\": {\"tax_id\": \"98765432109\", \"driver_license_number\": \"1234567890\", \"license_category\": \"D\"},\n        \"trip\": {\n            \"ref\": \"TR-MDFE-4819\",\n            \"layout_ref\": \"layout-mineracao-v2\",\n            \"vehicle_plate\": \"BRA2E19\",\n            \"from_location\": \"Filial SP\",\n            \"to_location\": \"Porto Santos\"\n        }\n    }\n]\n\nresponse = requests.post(url, headers=headers, json=payload)\nprint(response.json())\n```\n\n---\n\n## Atualizar Viagem(ns) (PUT)\n\n**Endpoint:** `PUT /api/v1/trips`\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** de atualiza\u00e7\u00e3o quanto uma **lista (array) de objetos** para atualiza\u00e7\u00e3o em lote.\n\n### Campos Protegidos (n\u00e3o edit\u00e1veis)\n\n| Campo | Motivo |\n| :--- | :--- |\n| `id` | Chave prim\u00e1ria interna |\n| `trucking_company_id` | V\u00ednculo de propriedade imut\u00e1vel |\n| `ref` | Chave de refer\u00eancia externa \u2014 usada como identificador |\n| `driver_id` | Identidade do motorista vinculado |\n\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"ref\": \"TR-MDFE-4819\",\n    \"trip\": {\n      \"vehicle_plate\": \"NEW3A21\",\n      \"summary\": \"Placa de cavalo mec\u00e2nico substitu\u00edda por pane mec\u00e2nica.\"\n    }\n  }\n]\n```\n\n---\n\n## Cancelar / Deletar Viagem(ns) (DELETE)\n\n**Endpoint:** `DELETE /api/v1/trips`\n\n> [!NOTE]\n> Este endpoint aceita tanto uma **\u00fanica string** de refer\u00eancia quanto um **array de strings** para cancelamento em lote.\n\nAltera o status da viagem para `DELETED`. Exemplo de envio em lote:\n\n```json\n[\"TR-MDFE-4819\"]\n```\n\n---\n\n## Consultar Logs e Hist\u00f3rico de Rastreamento (GET)\n\n**Endpoint:** `GET /api/v1/trips/logs`\n\n### Query Parameters\n\n| Par\u00e2metro | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `refs` | `string[]` | Repita o par\u00e2metro para m\u00faltiplos valores: `?refs=TR-MDFE-4819&refs=TR-MDFE-4820` |\n\n\n### Resposta de Exemplo\n```json\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"ref\": \"TR-MDFE-4819\",\n      \"found\": true,\n      \"data\": {\n        \"trip\": {\n          \"id\": \"f5e92716-11f8-4cb3-a5c6-c9a7d36d8f1e\",\n          \"trucking_company_id\": \"b3e9281a-12f8-4cb3-a5c6-d9a7e36d8f92\",\n          \"ref\": \"TR-MDFE-4819\",\n          \"layout_ref\": \"layout-mineracao-v2\",\n          \"driver_id\": \"d1d82761-b7e1-4560-84c4-f2a8c17df20b\",\n          \"vehicle_plate\": \"NEW3A21\",\n          \"status\": \"CREATED\",\n          \"summary\": \"Transporte de min\u00e9rio de ferro\",\n          \"schedule_start_time\": \"2026-07-16T06:00:00Z\",\n          \"schedule_end_time\": \"2026-07-16T18:00:00Z\",\n          \"schedule_start_tolerance\": 30,\n          \"schedule_end_tolerance\": 60,\n          \"custom_data\": {},\n          \"origin_street\": \"Avenida Mineral\",\n          \"origin_number\": \"1000\",\n          \"origin_city\": \"Brumadinho\",\n          \"origin_state\": \"MG\",\n          \"origin_country\": \"BR\",\n          \"origin_zip\": \"35460000\",\n          \"origin_lat\": -20.1219,\n          \"origin_lng\": -44.1997,\n          \"destiny_street\": \"Avenida Portu\u00e1ria\",\n          \"destiny_number\": \"S/N\",\n          \"destiny_city\": \"Vit\u00f3ria\",\n          \"destiny_state\": \"ES\",\n          \"destiny_country\": \"BR\",\n          \"destiny_zip\": \"29000000\",\n          \"destiny_lat\": -20.3184,\n          \"destiny_lng\": -40.2925,\n          \"from_location\": \"Sede Mineradora Brumadinho\",\n          \"to_location\": \"Porto de Tubar\u00e3o\",\n          \"created_at\": \"2026-07-12T12:10:00Z\",\n          \"updated_at\": \"2026-07-12T12:18:14Z\"\n        },\n        \"driver\": {\n          \"tax_id\": \"98765432109\",\n          \"driver_license_number\": \"1234567890\",\n          \"driver_license_category\": \"D\"\n        },\n        \"logs\": [\n          { \"event\": \"updated\", \"message\": \"Viagem atualizada via API.\", \"created_at\": \"2026-07-12T12:18:14.000000\" },\n          { \"event\": \"created\", \"message\": \"Viagem criada via API.\", \"created_at\": \"2026-07-12T12:10:00.000000\" }\n        ]\n      }\n    }\n  ]\n}\n```\n\n---\n\n## Erros Comuns\n\n| HTTP | code | Causa |\n| :--- | :--- | :--- |\n| `400` | `EMPTY_PAYLOAD` | Array vazio enviado no body |\n| `400` | `INVALID_LAYOUT_REF` | `layout_ref` n\u00e3o existe para esta transportadora |\n| `409` | `DUPLICATE_KEY` | Um ou mais `ref`s j\u00e1 existem no banco |\n| `404` | `REFS_NOT_FOUND` | `ref`s informados no PUT/DELETE n\u00e3o foram encontrados |"
+      "description": "# Gest\u00e3o de Viagens (Trips)\n\nO m\u00f3dulo de viagens foi projetado para **Transportadoras, Embarcadores e Operadores de Frota** registrarem e rastrearem a locomo\u00e7\u00e3o de cargas entre pontos de coleta (origem) e entrega (destino). As requisi\u00e7\u00f5es s\u00e3o processadas em lote (batch) para alta performance.\n\n---\n\n## Schemas\n\n### Driver\n\n> [!NOTE]\n> Os campos marcados com `*` s\u00e3o obrigat\u00f3rios.\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*tax_id` | `string` | CPF ou CNPJ do motorista (apenas n\u00fameros) |\n| `*driver_license_number` | `string` | N\u00famero da CNH |\n| `*license_category` | `string` | Categoria de habilita\u00e7\u00e3o (ex: `C`, `D`, `E`) |\n\n### Trip\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `*ref` | `string` | Refer\u00eancia \u00fanica da viagem no seu TMS/ERP (ex: n\u00famero do MDF-e ou CT-e). Usada em todas as consultas e atualiza\u00e7\u00f5es |\n| `*layout_ref` | `string` | C\u00f3digo do layout din\u00e2mico associado |\n| `license_plate` | `string` | Placa do caminh\u00e3o/carreta |\n| `summary` | `string` | Observa\u00e7\u00f5es ou detalhes adicionais da rota |\n| `start_time` | `string` ISO-8601 | In\u00edcio previsto da viagem |\n| `end_time` | `string` ISO-8601 | T\u00e9rmino previsto |\n| `start_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos antes do in\u00edcio (default: `0`) |\n| `end_tolerance` | `integer` | Margem de toler\u00e2ncia em minutos ap\u00f3s o t\u00e9rmino (default: `0`) |\n| `custom_data` | `object` | Metadados din\u00e2micos estruturados da viagem |\n\n### Dados Geogr\u00e1ficos de Origem\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `from_location` | `string` | Descri\u00e7\u00e3o textual da origem (ex: `F\u00e1brica de Cimento Votorantim`) |\n| `origin_street` | `string` | Nome da rua/avenida |\n| `origin_number` | `string` | N\u00famero predial |\n| `origin_city` | `string` | Cidade |\n| `origin_state` | `string` | Estado (sigla com 2 caracteres, ex: `SP`) |\n| `origin_country` | `string` | Pa\u00eds |\n| `origin_zip` | `string` | CEP (apenas n\u00fameros) |\n| `origin_lat` | `float` | Latitude para geofencing (ex: `-20.1219`) |\n| `origin_lng` | `float` | Longitude para geofencing (ex: `-44.1997`) |\n\n### Dados Geogr\u00e1ficos de Destino\n\n| Campo | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `to_location` | `string` | Descri\u00e7\u00e3o textual do destino (ex: `Centro de Distribui\u00e7\u00e3o Cajamar`) |\n| `destiny_street` | `string` | Nome da rua/avenida |\n| `destiny_number` | `string` | N\u00famero predial |\n| `destiny_city` | `string` | Cidade |\n| `destiny_state` | `string` | Estado (sigla com 2 caracteres) |\n| `destiny_country` | `string` | Pa\u00eds |\n| `destiny_zip` | `string` | CEP (apenas n\u00fameros) |\n| `destiny_lat` | `float` | Latitude do destino |\n| `destiny_lng` | `float` | Longitude do destino |\n\n---\n\n## Criar Viagem(ns) (POST)\n\n**Endpoint:** `POST /api/v1/trips` \u2014 **`201 Created`**\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** quanto uma **lista (array) de objetos** para cria\u00e7\u00e3o em lote.\n\n### Regras de Neg\u00f3cio\n\n> **Importante:**\n> * **Fail-Fast (Chaves Duplicadas):** Se algum `ref` j\u00e1 existir associado \u00e0 sua empresa, toda a transa\u00e7\u00e3o falha (`409 Conflict`).\n> * **Fail-Fast (Layout Inv\u00e1lido):** Refer\u00eancias de layout inexistentes retornam `400 Bad Request`.\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"driver\": {\n      \"tax_id\": \"98765432109\",\n      \"driver_license_number\": \"1234567890\",\n      \"license_category\": \"D\"\n    },\n    \"trip\": {\n      \"ref\": \"TR-MDFE-4819\",\n      \"layout_ref\": \"layout-mineracao-v2\",\n      \"license_plate\": \"BRA2E19\",\n      \"start_time\": \"2026-07-16T06:00:00Z\",\n      \"end_time\": \"2026-07-16T18:00:00Z\",\n      \"start_tolerance\": 30,\n      \"end_tolerance\": 60,\n      \"from_location\": \"Sede Mineradora Brumadinho\",\n      \"origin_city\": \"Brumadinho\",\n      \"origin_state\": \"MG\",\n      \"origin_lat\": -20.1219,\n      \"origin_lng\": -44.1997,\n      \"to_location\": \"Porto de Tubar\u00e3o\",\n      \"destiny_city\": \"Vit\u00f3ria\",\n      \"destiny_state\": \"ES\",\n      \"destiny_lat\": -20.2878,\n      \"destiny_lng\": -40.2882,\n      \"summary\": \"Transporte de Min\u00e9rio de Ferro bruto.\",\n      \"custom_data\": {\n        \"mdf_key\": \"31260712345678901234580010000048191000048198\"\n      }\n    }\n  }\n]\n```\n\n### Exemplos de C\u00f3digo\n\n#### cURL\n```bash\ncurl -X POST \"https://api.gatein.com/api/v1/trips\" \\\n  -H \"X-API-Key: sk_live_suachave\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '[{\"driver\":{\"tax_id\":\"98765432109\",\"driver_license_number\":\"1234567890\",\"license_category\":\"D\"},\"trip\":{\"ref\":\"TR-MDFE-4819\",\"layout_ref\":\"layout-mineracao-v2\",\"license_plate\":\"BRA2E19\"}}]'\n```\n\n#### Python\n```python\nimport requests\n\nurl = \"https://api.gatein.com/api/v1/trips\"\nheaders = {\"X-API-Key\": \"sk_live_suachave\", \"Content-Type\": \"application/json\"}\npayload = [\n    {\n        \"driver\": {\"tax_id\": \"98765432109\", \"driver_license_number\": \"1234567890\", \"license_category\": \"D\"},\n        \"trip\": {\n            \"ref\": \"TR-MDFE-4819\",\n            \"layout_ref\": \"layout-mineracao-v2\",\n            \"license_plate\": \"BRA2E19\",\n            \"from_location\": \"Filial SP\",\n            \"to_location\": \"Porto Santos\"\n        }\n    }\n]\n\nresponse = requests.post(url, headers=headers, json=payload)\nprint(response.json())\n```\n\n---\n\n## Atualizar Viagem(ns) (PUT)\n\n**Endpoint:** `PUT /api/v1/trips`\n\n> [!NOTE]\n> Este endpoint aceita tanto um **\u00fanico objeto** de atualiza\u00e7\u00e3o quanto uma **lista (array) de objetos** para atualiza\u00e7\u00e3o em lote.\n\n### Campos Protegidos (n\u00e3o edit\u00e1veis)\n\n| Campo | Motivo |\n| :--- | :--- |\n| `id` | Chave prim\u00e1ria interna |\n| `trucking_company_id` | V\u00ednculo de propriedade imut\u00e1vel |\n| `ref` | Chave de refer\u00eancia externa \u2014 usada como identificador |\n| `driver_id` | Identidade do motorista vinculado |\n\n\n### Payload de Exemplo\n```json\n[\n  {\n    \"ref\": \"TR-MDFE-4819\",\n    \"trip\": {\n      \"license_plate\": \"NEW3A21\",\n      \"summary\": \"Placa de cavalo mec\u00e2nico substitu\u00edda por pane mec\u00e2nica.\"\n    }\n  }\n]\n```\n\n---\n\n## Cancelar / Deletar Viagem(ns) (DELETE)\n\n**Endpoint:** `DELETE /api/v1/trips`\n\n> [!NOTE]\n> Este endpoint aceita tanto uma **\u00fanica string** de refer\u00eancia quanto um **array de strings** para cancelamento em lote.\n\nAltera o status da viagem para `DELETED`. Exemplo de envio em lote:\n\n```json\n[\"TR-MDFE-4819\"]\n```\n\n---\n\n## Consultar Logs e Hist\u00f3rico de Rastreamento (GET)\n\n**Endpoint:** `GET /api/v1/trips/logs`\n\n### Query Parameters\n\n| Par\u00e2metro | Tipo | Descri\u00e7\u00e3o |\n| :--- | :--- | :--- |\n| `refs` | `string[]` | Repita o par\u00e2metro para m\u00faltiplos valores: `?refs=TR-MDFE-4819&refs=TR-MDFE-4820` |\n\n\n### Resposta de Exemplo\n```json\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"ref\": \"TR-MDFE-4819\",\n      \"found\": true,\n      \"data\": {\n        \"trip\": {\n          \"id\": \"f5e92716-11f8-4cb3-a5c6-c9a7d36d8f1e\",\n          \"trucking_company_id\": \"b3e9281a-12f8-4cb3-a5c6-d9a7e36d8f92\",\n          \"ref\": \"TR-MDFE-4819\",\n          \"layout_ref\": \"layout-mineracao-v2\",\n          \"driver_id\": \"d1d82761-b7e1-4560-84c4-f2a8c17df20b\",\n          \"license_plate\": \"NEW3A21\",\n          \"status\": \"CREATED\",\n          \"summary\": \"Transporte de min\u00e9rio de ferro\",\n          \"window_start\": \"2026-07-16T06:00:00Z\",\n          \"window_end\": \"2026-07-16T18:00:00Z\",\n          \"start_tolerance\": 30,\n          \"end_tolerance\": 60,\n          \"custom_data\": {},\n          \"origin_street\": \"Avenida Mineral\",\n          \"origin_number\": \"1000\",\n          \"origin_city\": \"Brumadinho\",\n          \"origin_state\": \"MG\",\n          \"origin_country\": \"BR\",\n          \"origin_zip\": \"35460000\",\n          \"origin_lat\": -20.1219,\n          \"origin_lng\": -44.1997,\n          \"destiny_street\": \"Avenida Portu\u00e1ria\",\n          \"destiny_number\": \"S/N\",\n          \"destiny_city\": \"Vit\u00f3ria\",\n          \"destiny_state\": \"ES\",\n          \"destiny_country\": \"BR\",\n          \"destiny_zip\": \"29000000\",\n          \"destiny_lat\": -20.3184,\n          \"destiny_lng\": -40.2925,\n          \"from_location\": \"Sede Mineradora Brumadinho\",\n          \"to_location\": \"Porto de Tubar\u00e3o\",\n          \"created_at\": \"2026-07-12T12:10:00Z\",\n          \"updated_at\": \"2026-07-12T12:18:14Z\"\n        },\n        \"driver\": {\n          \"tax_id\": \"98765432109\",\n          \"driver_license_number\": \"1234567890\",\n          \"driver_license_category\": \"D\"\n        },\n        \"logs\": [\n          { \"event\": \"updated\", \"message\": \"Viagem atualizada via API.\", \"created_at\": \"2026-07-12T12:18:14.000000\" },\n          { \"event\": \"created\", \"message\": \"Viagem criada via API.\", \"created_at\": \"2026-07-12T12:10:00.000000\" }\n        ]\n      }\n    }\n  ]\n}\n```\n\n---\n\n## Erros Comuns\n\n| HTTP | code | Causa |\n| :--- | :--- | :--- |\n| `400` | `EMPTY_PAYLOAD` | Array vazio enviado no body |\n| `400` | `INVALID_LAYOUT_REF` | `layout_ref` n\u00e3o existe para esta transportadora |\n| `409` | `DUPLICATE_KEY` | Um ou mais `ref`s j\u00e1 existem no banco |\n| `404` | `REFS_NOT_FOUND` | `ref`s informados no PUT/DELETE n\u00e3o foram encontrados |"
     },
     {
       "name": "Services",

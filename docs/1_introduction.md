@@ -83,9 +83,9 @@ curl -X POST "https://api.gatein.com/api/v1/appointments" \
     "appointment": {
       "ref": "AG-2026-001",
       "layout_ref": "layout-graos-v1",
-      "schedule_start_time": "2026-07-20T08:00:00Z",
-      "schedule_end_time": "2026-07-20T10:00:00Z",
-      "vehicle_plate": "ABC1D23"
+      "window_start": "2026-07-20T08:00:00Z",
+      "window_end": "2026-07-20T10:00:00Z",
+      "license_plate": "ABC1D23"
     }
   }]'
 ```
