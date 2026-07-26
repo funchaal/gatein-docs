@@ -635,27 +635,27 @@ components:
         summary:
           type: string
           title: Summary
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
           title: Vehicle Plate
-        schedule_start_time:
+        window_start:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule Start Time
-        schedule_end_time:
+        window_end:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule End Time
-        schedule_start_tolerance:
+        start_tolerance:
           anyOf:
             - type: integer
             - type: 'null'
           title: Schedule Start Tolerance
-        schedule_end_tolerance:
+        end_tolerance:
           anyOf:
             - type: integer
             - type: 'null'
@@ -791,7 +791,7 @@ components:
             - type: string
             - type: 'null'
           title: Driver Id
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
@@ -802,12 +802,12 @@ components:
         summary:
           type: string
           title: Summary
-        schedule_start_time:
+        window_start:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule Start Time
-        schedule_end_time:
+        window_end:
           anyOf:
             - type: string
             - type: 'null'
@@ -1331,26 +1331,26 @@ components:
           type: string
           title: Layout Ref
           description: Referência do layout de agendamento a ser aplicado
-        schedule_start_time:
+        window_start:
           anyOf:
             - type: string
               format: date-time
             - type: 'null'
           title: Schedule Start Time
           description: Data/hora de início agendada
-        schedule_end_time:
+        window_end:
           anyOf:
             - type: string
               format: date-time
             - type: 'null'
           title: Schedule End Time
           description: Data/hora de término agendada
-        schedule_start_tolerance:
+        start_tolerance:
           type: integer
           title: Schedule Start Tolerance
           description: Tolerância de início em minutos
           default: 0
-        schedule_end_tolerance:
+        end_tolerance:
           type: integer
           title: Schedule End Tolerance
           description: Tolerância de término em minutos
@@ -1361,7 +1361,7 @@ components:
             - type: 'null'
           title: Summary
           description: Resumo ou observações do agendamento
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
@@ -1407,25 +1407,25 @@ components:
             - type: string
             - type: 'null'
           title: Summary
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
           title: Vehicle Plate
-        schedule_start_time:
+        window_start:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule Start Time
-        schedule_end_time:
+        window_end:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule End Time
-        schedule_start_tolerance:
+        start_tolerance:
           type: integer
           title: Schedule Start Tolerance
-        schedule_end_tolerance:
+        end_tolerance:
           type: integer
           title: Schedule End Tolerance
         custom_data:
@@ -1451,8 +1451,8 @@ components:
         - ref
         - user_tax_id
         - status
-        - schedule_start_tolerance
-        - schedule_end_tolerance
+        - start_tolerance
+        - end_tolerance
       title: AppointmentDataResponseItem
       description: Item schema representing deep details of an appointment.
     AppointmentLogDataContent:
@@ -1570,25 +1570,25 @@ components:
             - type: string
             - type: 'null'
           title: Summary
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
           title: Vehicle Plate
-        schedule_start_time:
+        window_start:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule Start Time
-        schedule_end_time:
+        window_end:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule End Time
-        schedule_start_tolerance:
+        start_tolerance:
           type: integer
           title: Schedule Start Tolerance
-        schedule_end_tolerance:
+        end_tolerance:
           type: integer
           title: Schedule End Tolerance
         custom_data:
@@ -1607,8 +1607,8 @@ components:
         - id
         - terminal_id
         - status
-        - schedule_start_tolerance
-        - schedule_end_tolerance
+        - start_tolerance
+        - end_tolerance
         - tickets
       title: AppointmentResponseSchema
       description: Schema representing detailed appointment information.
@@ -3296,7 +3296,7 @@ components:
           type: string
           title: Layout Ref
           description: Referência do layout a ser utilizado
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
@@ -3322,12 +3322,12 @@ components:
             - type: 'null'
           title: End Time
           description: Data/hora prevista de término
-        schedule_start_tolerance:
+        start_tolerance:
           type: integer
           title: Schedule Start Tolerance
           description: Tolerância de início em minutos
           default: 0
-        schedule_end_tolerance:
+        end_tolerance:
           type: integer
           title: Schedule End Tolerance
           description: Tolerância de término em minutos
@@ -3476,7 +3476,7 @@ components:
             - type: string
             - type: 'null'
           title: Driver Id
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
@@ -3489,20 +3489,20 @@ components:
             - type: string
             - type: 'null'
           title: Summary
-        schedule_start_time:
+        window_start:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule Start Time
-        schedule_end_time:
+        window_end:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule End Time
-        schedule_start_tolerance:
+        start_tolerance:
           type: integer
           title: Schedule Start Tolerance
-        schedule_end_tolerance:
+        end_tolerance:
           type: integer
           title: Schedule End Tolerance
         custom_data:
@@ -3617,8 +3617,8 @@ components:
         - trucking_company_id
         - ref
         - status
-        - schedule_start_tolerance
-        - schedule_end_tolerance
+        - start_tolerance
+        - end_tolerance
       title: TripDataResponseItem
       description: Item schema representing deep details of a trip.
     TripLogDataContent:
@@ -3736,25 +3736,25 @@ components:
             - type: string
             - type: 'null'
           title: Summary
-        vehicle_plate:
+        license_plate:
           anyOf:
             - type: string
             - type: 'null'
           title: Vehicle Plate
-        schedule_start_time:
+        window_start:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule Start Time
-        schedule_end_time:
+        window_end:
           anyOf:
             - type: string
             - type: 'null'
           title: Schedule End Time
-        schedule_start_tolerance:
+        start_tolerance:
           type: integer
           title: Schedule Start Tolerance
-        schedule_end_tolerance:
+        end_tolerance:
           type: integer
           title: Schedule End Tolerance
         custom_data:
@@ -3782,8 +3782,8 @@ components:
         - id
         - trucking_company_id
         - status
-        - schedule_start_tolerance
-        - schedule_end_tolerance
+        - start_tolerance
+        - end_tolerance
         - origin
         - destiny
       title: TripResponseSchema
@@ -4809,19 +4809,19 @@ tags:
       | `*layout_ref` | `string` | ID do layout dinâmico a aplicar a este
       agendamento |
 
-      | `schedule_start_time` | `string` ISO-8601 | Horário inicial agendado
-      (ex: `2026-07-15T08:00:00Z`) |
+      | `window_start` | `string` ISO-8601 | Horário inicial agendado (ex:
+      `2026-07-15T08:00:00Z`) |
 
-      | `schedule_end_time` | `string` ISO-8601 | Horário limite final agendado
-      (ex: `2026-07-15T12:00:00Z`) |
+      | `window_end` | `string` ISO-8601 | Horário limite final agendado (ex:
+      `2026-07-15T12:00:00Z`) |
 
-      | `schedule_start_tolerance` | `integer` | Margem de tolerância em minutos
-      antes do início (default: `0`) |
+      | `start_tolerance` | `integer` | Margem de tolerância em minutos antes do
+      início (default: `0`) |
 
-      | `schedule_end_tolerance` | `integer` | Margem de tolerância em minutos
-      após o término (default: `0`) |
+      | `end_tolerance` | `integer` | Margem de tolerância em minutos após o
+      término (default: `0`) |
 
-      | `vehicle_plate` | `string` | Placa do cavalo mecânico ou veículo
+      | `license_plate` | `string` | Placa do cavalo mecânico ou veículo
       principal |
 
       | `summary` | `string` | Observações ou notas textuais sobre a operação |
@@ -4929,12 +4929,12 @@ tags:
           "appointment": {
             "ref": "AG-2026-009",
             "layout_ref": "layout-graos-v1",
-            "schedule_start_time": "2026-07-15T14:00:00Z",
-            "schedule_end_time": "2026-07-15T16:00:00Z",
-            "schedule_start_tolerance": 30,
-            "schedule_end_tolerance": 60,
+            "window_start": "2026-07-15T14:00:00Z",
+            "window_end": "2026-07-15T16:00:00Z",
+            "start_tolerance": 30,
+            "end_tolerance": 60,
             "summary": "Descarregamento de Soja Orgânica",
-            "vehicle_plate": "ABC1D23",
+            "license_plate": "ABC1D23",
             "custom_data": {
               "nota_fiscal": "45982",
               "peso_estimado_kg": 42000
@@ -4978,9 +4978,9 @@ tags:
               "appointment": {
                   "ref": "AG-2026-009",
                   "layout_ref": "layout-graos-v1",
-                  "schedule_start_time": "2026-07-15T14:00:00Z",
-                  "schedule_end_time": "2026-07-15T16:00:00Z",
-                  "vehicle_plate": "ABC1D23"
+                  "window_start": "2026-07-15T14:00:00Z",
+                  "window_end": "2026-07-15T16:00:00Z",
+                  "license_plate": "ABC1D23"
               }
           }
       ]
@@ -5033,7 +5033,7 @@ tags:
         {
           "ref": "AG-2026-009",
           "appointment": {
-            "vehicle_plate": "XYZ9Z99",
+            "license_plate": "XYZ9Z99",
             "summary": "Placa de cavalo mecânico atualizada por mudança de frota."
           }
         }
@@ -5108,11 +5108,11 @@ tags:
                 "user_tax_id": "12345678909",
                 "status": "DELETED",
                 "summary": "Agendamento cancelado",
-                "vehicle_plate": "XYZ9Z99",
-                "schedule_start_time": "2026-07-12T10:00:00Z",
-                "schedule_end_time": "2026-07-12T12:00:00Z",
-                "schedule_start_tolerance": 30,
-                "schedule_end_tolerance": 30,
+                "license_plate": "XYZ9Z99",
+                "window_start": "2026-07-12T10:00:00Z",
+                "window_end": "2026-07-12T12:00:00Z",
+                "start_tolerance": 30,
+                "end_tolerance": 30,
                 "custom_data": {
                   "ticket_acesso": "TC-90182"
                 },
@@ -5204,7 +5204,7 @@ tags:
 
       | `*layout_ref` | `string` | Código do layout dinâmico associado |
 
-      | `vehicle_plate` | `string` | Placa do caminhão/carreta |
+      | `license_plate` | `string` | Placa do caminhão/carreta |
 
       | `summary` | `string` | Observações ou detalhes adicionais da rota |
 
@@ -5212,11 +5212,11 @@ tags:
 
       | `end_time` | `string` ISO-8601 | Término previsto |
 
-      | `schedule_start_tolerance` | `integer` | Margem de tolerância em minutos
-      antes do início (default: `0`) |
+      | `start_tolerance` | `integer` | Margem de tolerância em minutos antes do
+      início (default: `0`) |
 
-      | `schedule_end_tolerance` | `integer` | Margem de tolerância em minutos
-      após o término (default: `0`) |
+      | `end_tolerance` | `integer` | Margem de tolerância em minutos após o
+      término (default: `0`) |
 
       | `custom_data` | `object` | Metadados dinâmicos estruturados da viagem |
 
@@ -5316,11 +5316,11 @@ tags:
           "trip": {
             "ref": "TR-MDFE-4819",
             "layout_ref": "layout-mineracao-v2",
-            "vehicle_plate": "BRA2E19",
+            "license_plate": "BRA2E19",
             "start_time": "2026-07-16T06:00:00Z",
             "end_time": "2026-07-16T18:00:00Z",
-            "schedule_start_tolerance": 30,
-            "schedule_end_tolerance": 60,
+            "start_tolerance": 30,
+            "end_tolerance": 60,
             "from_location": "Sede Mineradora Brumadinho",
             "origin_city": "Brumadinho",
             "origin_state": "MG",
@@ -5352,7 +5352,7 @@ tags:
       curl -X POST "https://api.gatein.com/api/v1/trips" \
         -H "X-API-Key: sk_live_suachave" \
         -H "Content-Type: application/json" \
-        -d '[{"driver":{"tax_id":"98765432109","driver_license_number":"1234567890","license_category":"D"},"trip":{"ref":"TR-MDFE-4819","layout_ref":"layout-mineracao-v2","vehicle_plate":"BRA2E19"}}]'
+        -d '[{"driver":{"tax_id":"98765432109","driver_license_number":"1234567890","license_category":"D"},"trip":{"ref":"TR-MDFE-4819","layout_ref":"layout-mineracao-v2","license_plate":"BRA2E19"}}]'
       ```
 
 
@@ -5374,7 +5374,7 @@ tags:
               "trip": {
                   "ref": "TR-MDFE-4819",
                   "layout_ref": "layout-mineracao-v2",
-                  "vehicle_plate": "BRA2E19",
+                  "license_plate": "BRA2E19",
                   "from_location": "Filial SP",
                   "to_location": "Porto Santos"
               }
@@ -5429,7 +5429,7 @@ tags:
         {
           "ref": "TR-MDFE-4819",
           "trip": {
-            "vehicle_plate": "NEW3A21",
+            "license_plate": "NEW3A21",
             "summary": "Placa de cavalo mecânico substituída por pane mecânica."
           }
         }
@@ -5501,13 +5501,13 @@ tags:
                 "ref": "TR-MDFE-4819",
                 "layout_ref": "layout-mineracao-v2",
                 "driver_id": "d1d82761-b7e1-4560-84c4-f2a8c17df20b",
-                "vehicle_plate": "NEW3A21",
+                "license_plate": "NEW3A21",
                 "status": "CREATED",
                 "summary": "Transporte de minério de ferro",
-                "schedule_start_time": "2026-07-16T06:00:00Z",
-                "schedule_end_time": "2026-07-16T18:00:00Z",
-                "schedule_start_tolerance": 30,
-                "schedule_end_tolerance": 60,
+                "window_start": "2026-07-16T06:00:00Z",
+                "window_end": "2026-07-16T18:00:00Z",
+                "start_tolerance": 30,
+                "end_tolerance": 60,
                 "custom_data": {},
                 "origin_street": "Avenida Mineral",
                 "origin_number": "1000",
