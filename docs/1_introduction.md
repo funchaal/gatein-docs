@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: O que é o GateIn?
+title: Getting Started
 ---
 
-# O que é o GateIn?
+# Getting Started
 
 O GateIn é uma plataforma completa de gestão de acesso para terminais logísticos e portuários. Ele conecta **terminais**, **transportadoras** e **motoristas** num único ecossistema digital — do agendamento até a saída pela cancela.
 

@@ -3,7 +3,7 @@ sidebar_position: 11
 title: Notificações Push & Regras
 ---
 
-# 🔔 Especificação do Sistema de Notificações Push (GateIn)
+# Especificação do Sistema de Notificações Push (GateIn)
 
 Este documento descreve detalhadamente **todas as notificações push possíveis no ecossistema GateIn**, suas regras de disparo, motivos/objetivos de negócio, payloads de dados e a arquitetura de deduplicação para garantir que notificações agendadas sejam entregues **uma única vez**.
 
@@ -21,21 +21,23 @@ No backend (`gatein-server`), as notificações são disparadas em dois cenário
 
 ## 2. Tabela Resumo de Notificações
 
-| Código / `type` | Título Exibido | Disparo / Origem | Frequência / Regra | Público-Alvo | Motivo / Objetivo de Negócio |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `REMINDER_1DAY` | 📌 Lembrete: amanhã | Job `check_1day_reminders` (1h) | 23h a 25h antes do `window_start` | Motorista (`user_tax_id`) | Alertar com 24h de antecedência para planejamento de viagem. |
-| `COUNTDOWN` | ⏱ Em breve! | Job `check_12h_reminders` (15min) | ~12h antes do `window_start` | Motorista (`user_tax_id`) | Notificar 12h antes e fornecer dados de contagem regressiva. |
-| `WINDOW_OPEN` | 🟢 Janela aberta! | Job `check_window_open` (5min) | Momento em que abre a janela de check-in | Motorista (`user_tax_id`) | Avisar que o acesso ao pátio/terminal está liberado para check-in. |
-| `ON_GOING` | 🏭 Em andamento | Job `check_in_progress` (5min) | Quando o agendamento muda para `ON_GOING` | Motorista (`user_tax_id`) | Orientar o motorista a seguir as instruções do terminal em operação. |
-| `CANCELLED` | Agendamento Desativado | Job `deactivate_abandoned_appointments` (5min) | > 2h sem ping ou estouro de tolerância | Motorista (`user_tax_id`) | Avisar que o agendamento foi encerrado/desativado por inatividade. |
-| `SCHEDULED_CREATED` | 📅 Novo agendamento | API pública (`POST /appointments`) | Imediato após criação do agendamento | Motorista (`user_tax_id`) | Informar a criação de um novo agendamento pela transportadora/terminal. |
-| `SCHEDULED_UPDATE` | ⏰ Horário alterado / 🔄 Dados atualizados | API pública (`PUT /appointments`) | Imediato após alteração de dados/horário | Motorista (`user_tax_id`) | Notificar sobre remarcação de horários ou alteração de dados operacionais. |
-| `CANCELLED` | ❌ Agendamento cancelado | API pública (`DELETE /appointments`) | Imediato após cancelamento do agendamento | Motorista (`user_tax_id`) | Alertar sobre o cancelamento do agendamento para evitar deslocamentos. |
-| `CHECKED-IN` | ✅ Check-in realizado! | Handshake Socket (`POST /checkin/{id}`) | Imediato após confirmação no totem | Motorista (`user_tax_id`) | Confirmar a recepção da senha/ticket de entrada no terminal. |
-| `CHECKIN_FAILED` | ❌ Tempo limite excedido / ❌ Falha no check-in | Handshake Socket (`POST /checkin/{id}`) | Falha ou timeout (> 15s) de comunicação | Motorista (`user_tax_id`) | Informar erro de comunicação com totem para que o motorista retente. |
-| `CHECKIN_CANCELLED` | ⚠️ Check-in cancelado | Endpoint (`POST /checkin/cancel/{id}`) | Imediato após o cancelamento do check-in | Motorista (`user_tax_id`) | Confirmar a reversão do status do agendamento de volta para Agendado. |
-| `TEST` | Notificação de Teste | Endpoint (`POST /notifications/test`) | Manual / Teste sob demanda | Usuário Autenticado | Validar recebimento de push e registro de tokens FCM no aparelho. |
-| `ANNOUNCEMENT` | *Título do Anúncio* | Painel Web (`POST /announcements`) | Publicação de anúncio institucional | Motoristas da empresa | Comunicar avisos gerais, alertas de segurança ou recados do terminal. |
+> [!NOTE]
+> Salvo indicação em contrário, todas as notificações são destinadas diretamente ao motorista responsável (`user_tax_id`).
+
+| Código / `type` | Título Exibido | Gatilho & Origem | Objetivo de Negócio |
+| :--- | :--- | :--- | :--- |
+| `REMINDER_1DAY` | Lembrete: amanhã | Job Scheduler (24h antes) | Alertar antecedência para planejamento de viagem. |
+| `COUNTDOWN` | Em breve! | Job Scheduler (12h antes) | Notificar 12h antes e fornecer contagem regressiva. |
+| `WINDOW_OPEN` | Janela aberta! | Job Scheduler (Início da janela) | Avisar que o acesso ao pátio está liberado. |
+| `ON_GOING` | Em andamento | Job Scheduler (Status `ON_GOING`) | Orientar o motorista a seguir as instruções do terminal. |
+| `CANCELLED` | Agendamento Desativado | Job / API (`DELETE /appointments`) | Notificar cancelamento ou encerramento por inatividade. |
+| `SCHEDULED_CREATED` | Novo agendamento | API pública (`POST /appointments`) | Informar a criação de um novo agendamento. |
+| `SCHEDULED_UPDATE` | Horário alterado | API pública (`PUT /appointments`) | Notificar remarcação de horários ou dados. |
+| `CHECKED-IN` | Check-in realizado! | Handshake Socket (Totem) | Confirmar recepção da senha/ticket no terminal. |
+| `CHECKIN_FAILED` | Falha no check-in | Handshake Socket (Timeout/Erro) | Informar erro no totem para que o motorista retente. |
+| `CHECKIN_CANCELLED` | Check-in cancelado | API (`POST /checkin/cancel/{id}`) | Confirmar reversão do status para Agendado. |
+| `TEST` | Notificação de Teste | API (`POST /notifications/test`) | Validar recebimento de push e registro de tokens. |
+| `ANNOUNCEMENT` | *Título do Anúncio* | Painel Web (`POST /announcements`) | Comunicar avisos gerais e alertas do terminal. |
 
 ---
 

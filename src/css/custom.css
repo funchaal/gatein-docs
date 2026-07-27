@@ -1,11 +1,14 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * GateIn Docs — Premium Dark Theme
+ * Clean, modern, premium documentation styling
  */
 
-/* You can override the default Infima variables here. */
+/* ================================================================
+   1. CSS CUSTOM PROPERTIES
+   ================================================================ */
+
 :root {
+  /* Orange accent palette */
   --ifm-color-primary: #f97316;
   --ifm-color-primary-dark: #e06814;
   --ifm-color-primary-darker: #d46213;
@@ -13,16 +16,33 @@
   --ifm-color-primary-light: #fa8534;
   --ifm-color-primary-lighter: #fb9651;
   --ifm-color-primary-lightest: #fca76e;
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-  /* Reduce heading font sizes */
-  --ifm-h1-font-size: 1.85rem;
-  --ifm-h2-font-size: 1.45rem;
-  --ifm-h3-font-size: 1.2rem;
+  /* Heading sizes — smaller H1 */
+  --ifm-h1-font-size: 1.6rem;
+  --ifm-h2-font-size: 1.35rem;
+  --ifm-h3-font-size: 1.15rem;
+
+  /* Navbar */
+  --ifm-navbar-height: 3.4rem;
+
+  /* Premium dark palette (applied even in light mode for forced dark) */
+  --gatein-bg-deep: #0a0a0a;
+  --gatein-bg-primary: #121212;
+  --gatein-bg-secondary: #181818;
+  --gatein-bg-elevated: #202020;
+  --gatein-bg-surface: #282828;
+  --gatein-border-subtle: rgba(255, 255, 255, 0.08);
+  --gatein-border-medium: rgba(255, 255, 255, 0.15);
+  --gatein-text-primary: #e5e5e5;
+  --gatein-text-secondary: #a3a3a3;
+  --gatein-text-muted: #737373;
+  --gatein-accent: #f97316;
+  --gatein-accent-glow: rgba(249, 115, 22, 0.15);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #f97316;
   --ifm-color-primary-dark: #e06208;
@@ -32,37 +52,564 @@
   --ifm-color-primary-lighter: #fb9852;
   --ifm-color-primary-lightest: #fca86d;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Hide footer element */
+  footer.footer {
+    display: none !important;
+  }
+
+  --ifm-background-color: var(--gatein-bg-primary);
+  --ifm-background-surface-color: var(--gatein-bg-secondary);
+  --ifm-font-color-base: var(--gatein-text-primary);
+  --ifm-navbar-background-color: transparent;
+  --ifm-footer-background-color: var(--gatein-bg-deep);
+  --ifm-toc-border-color: var(--gatein-border-subtle);
+  --ifm-hr-border-color: var(--gatein-border-subtle);
+  --ifm-table-border-color: var(--gatein-border-subtle);
+  --ifm-menu-color: var(--gatein-text-secondary);
+  --ifm-menu-color-active: var(--gatein-accent);
+  --ifm-menu-color-background-active: var(--gatein-accent-glow);
 }
 
-/* Add custom padding-left on the central content container */
+/* ================================================================
+   2. GLOBAL BACKGROUND & BODY
+   ================================================================ */
+
+[data-theme='dark'] body {
+  background: var(--gatein-bg-primary);
+}
+
+[data-theme='dark'] main {
+  background: var(--gatein-bg-primary);
+}
+
+/* ================================================================
+   3. NAVBAR — Blur, transparent, compact
+   ================================================================ */
+
+[data-theme='dark'] .navbar {
+  background: rgba(18, 18, 18, 0.72);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--gatein-border-subtle);
+  box-shadow: none;
+  height: var(--ifm-navbar-height);
+}
+
+[data-theme='dark'] .navbar__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+[data-theme='dark'] .navbar__link {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ================================================================
+   4. SIDEBAR — Uniform small fonts
+   ================================================================ */
+
+/* Top-level sidebar items — same small size as sub-items */
+[data-theme='dark'] .menu__link {
+  font-size: 0.88rem; /* Aumentado */
+  font-weight: 500;
+  color: var(--gatein-text-primary);
+  padding: 0.45rem 0.75rem; /* Aumentada a altura */
+  transition: all 0.15s ease;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  color: var(--gatein-accent);
+  font-weight: 600;
+  background: transparent;
+}
+
+/* Category labels (collapsible headings) — same size */
+[data-theme='dark'] .menu__link--sublist {
+  font-size: 0.88rem; /* Uniform size */
+  font-weight: 600;
+  color: var(--gatein-text-primary); /* White text */
+  text-transform: none;
+}
+
+/* Sub-items with left border indicator animation */
+[data-theme='dark'] .menu__list .menu__list {
+  position: relative;
+  border-left: 1px solid var(--gatein-border-medium);
+  margin-left: 1rem;
+  padding-left: 0.25rem;
+}
+
+[data-theme='dark'] .menu__list .menu__list .menu__link {
+  position: relative;
+  font-size: 0.88rem; /* Uniform size */
+  color: var(--gatein-text-primary);
+  padding-left: 0.5rem;
+  margin-left: 0;
+  margin-right: 0.5rem; /* Horizontal margin */
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+[data-theme='dark'] .menu__list .menu__list .menu__link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .menu__list .menu__list .menu__link--active {
+  font-weight: 500;
+  color: var(--gatein-accent);
+  background: transparent;
+}
+
+/* Sidebar container background */
+[data-theme='dark'] .theme-doc-sidebar-container {
+  border-right: 1px solid var(--gatein-border-subtle) !important;
+}
+
+[data-theme='dark'] aside.theme-doc-sidebar-container > div {
+  background: var(--gatein-bg-primary);
+}
+
+/* ================================================================
+   5. SCROLLBAR — Dark & thin
+   ================================================================ */
+
+/* Webkit scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gatein-bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a; /* Strict neutral grey */
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a; /* Strict neutral grey hover */
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a var(--gatein-bg-deep);
+}
+
+/* ================================================================
+   6. CONTENT AREA
+   ================================================================ */
+
+/* Left padding for main content */
 @media (min-width: 997px) {
   .theme-doc-markdown {
     padding-left: 2rem;
   }
 }
 
-/* Custom styling for sidebar sub-items (Level 2+) to differentiate from top-level options */
-.menu__list .menu__list .menu__link {
-  font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-600);
-  border-left: 1.5px solid var(--ifm-color-emphasis-200);
-  border-radius: 0;
-  padding-left: 0.85rem;
-  margin-left: 0.25rem;
-  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+/* H1 — smaller with more top spacing */
+[data-theme='dark'] .theme-doc-markdown h1:first-child,
+[data-theme='dark'] article header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 1.6rem;
+  padding-top: 0.5rem;
+  letter-spacing: -0.01em;
+  color: var(--gatein-text-primary);
 }
 
-/* Hover state for sub-items */
-.menu__list .menu__list .menu__link:hover {
-  color: var(--ifm-color-primary);
-  border-left-color: var(--ifm-color-primary);
+/* All headings — tighter, cleaner */
+[data-theme='dark'] .theme-doc-markdown h2 {
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: var(--gatein-text-primary);
+  margin-top: 2.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--gatein-border-subtle);
 }
 
-/* Active state for sub-items */
-.menu__list .menu__list .menu__link--active {
+[data-theme='dark'] .theme-doc-markdown h3 {
+  font-size: 1.1rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
-  border-left-color: var(--ifm-color-primary);
-  border-left-width: 2px;
-  padding-left: 0.82rem; /* adjust padding to compensate for thicker border */
+  color: var(--gatein-text-primary);
 }
+
+[data-theme='dark'] .theme-doc-markdown h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gatein-text-secondary);
+}
+
+/* Paragraphs */
+[data-theme='dark'] .theme-doc-markdown p {
+  color: var(--gatein-text-secondary);
+  line-height: 1.75;
+  font-size: 0.92rem;
+}
+
+/* Links */
+[data-theme='dark'] .theme-doc-markdown a {
+  color: var(--gatein-accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+[data-theme='dark'] .theme-doc-markdown a:hover {
+  color: var(--ifm-color-primary-light);
+  text-decoration: underline;
+}
+
+/* Lists */
+[data-theme='dark'] .theme-doc-markdown li {
+  font-size: 0.92rem;
+  color: var(--gatein-text-secondary);
+  line-height: 1.7;
+}
+
+/* Strong / bold text */
+[data-theme='dark'] .theme-doc-markdown strong {
+  color: var(--gatein-text-primary);
+  font-weight: 600;
+}
+
+/* Horizontal rules */
+[data-theme='dark'] .theme-doc-markdown hr {
+  border-color: var(--gatein-border-subtle);
+  margin: 2rem 0;
+}
+
+/* ================================================================
+   7. TABLES — Premium compact design with rounded borders
+   ================================================================ */
+
+[data-theme='dark'] .theme-doc-markdown table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--gatein-border-medium);
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  background: var(--gatein-bg-secondary);
+  font-size: 0.82rem;
+}
+
+[data-theme='dark'] .theme-doc-markdown thead {
+  background: var(--gatein-bg-elevated);
+}
+
+[data-theme='dark'] .theme-doc-markdown thead tr {
+  border-bottom: none;
+}
+
+[data-theme='dark'] .theme-doc-markdown th {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--gatein-text-primary);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--gatein-border-medium);
+  border-right: none;
+  white-space: normal;
+  background: transparent;
+}
+
+[data-theme='dark'] .theme-doc-markdown td {
+  padding: 0.5rem 0.75rem;
+  color: var(--gatein-text-secondary);
+  border-bottom: 1px solid var(--gatein-border-subtle);
+  border-right: none;
+  vertical-align: top;
+  line-height: 1.45;
+  background: transparent;
+}
+
+/* Remove border from last row */
+[data-theme='dark'] .theme-doc-markdown tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Alternating row backgrounds - disabled */
+[data-theme='dark'] .theme-doc-markdown tbody tr:nth-child(even) {
+  background: transparent;
+}
+
+[data-theme='dark'] .theme-doc-markdown tbody tr:hover {
+  background: transparent;
+}
+
+/* First column bold styling */
+[data-theme='dark'] .theme-doc-markdown td:first-child {
+  color: var(--gatein-text-primary);
+  font-weight: 500;
+}
+
+/* Inline code inside tables */
+[data-theme='dark'] .theme-doc-markdown td code,
+[data-theme='dark'] .theme-doc-markdown th code {
+  font-size: 0.78rem;
+  padding: 0.15rem 0.35rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  border: 1px solid var(--gatein-border-subtle);
+}
+
+/* ================================================================
+   8. CODE BLOCKS — Premium styling
+   ================================================================ */
+
+[data-theme='dark'] pre {
+  background: var(--gatein-bg-deep) !important;
+  border: 1px solid var(--gatein-border-subtle);
+  border-radius: 10px;
+  font-size: 0.83rem;
+}
+
+[data-theme='dark'] code {
+  font-size: 0.88rem;
+  border-radius: 4px;
+}
+
+[data-theme='dark'] .theme-doc-markdown code {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--gatein-border-subtle);
+  padding: 0.15rem 0.4rem;
+  font-size: 0.85rem;
+  color: var(--gatein-accent);
+}
+
+/* Code block title bar (headers) — compact & neutral */
+[data-theme='dark'] .theme-code-block-title,
+[data-theme='dark'] div[class*='codeBlockTitle'] {
+  background: var(--gatein-bg-secondary) !important; /* Neutral dark, no blue */
+  border: 1px solid var(--gatein-border-subtle);
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0.3rem 0.85rem !important; /* Decreased height */
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gatein-text-secondary);
+}
+
+[data-theme='dark'] div[class*='codeBlockTitle'] + pre {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+/* Code block title bar */
+[data-theme='dark'] .theme-code-block-highlighted-line {
+  background: rgba(249, 115, 22, 0.08);
+}
+
+/* ================================================================
+   9. TOC (Table of Contents) — Orange active indicator bar
+   ================================================================ */
+
+[data-theme='dark'] .table-of-contents {
+  border-left: 1px solid var(--gatein-border-subtle);
+  padding-left: 0;
+  position: relative;
+}
+
+[data-theme='dark'] .table-of-contents__link {
+  font-size: 0.78rem;
+  color: var(--gatein-text-muted);
+  display: block;
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin-left: -1px;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  position: relative;
+  border-left: 2px solid transparent;
+}
+
+[data-theme='dark'] .table-of-contents__link:hover {
+  color: var(--gatein-text-primary);
+}
+
+[data-theme='dark'] .table-of-contents__link--active {
+  color: var(--gatein-accent) !important;
+  font-weight: 400; /* No font size/weight increase */
+}
+
+/* JS Sliding Indicators */
+#gatein-toc-indicator {
+  position: absolute;
+  width: 2px;
+  background-color: var(--gatein-accent);
+  transition: top 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  left: -1px;
+}
+
+/* Nested TOC items */
+[data-theme='dark'] .table-of-contents__link.table-of-contents__link--active + ul .table-of-contents__link {
+  color: var(--gatein-text-secondary);
+}
+
+/* ================================================================
+   10. ADMONITIONS — Premium styling
+   ================================================================ */
+
+[data-theme='dark'] .alert {
+  background: var(--gatein-bg-elevated);
+  border: 1px solid var(--gatein-border-subtle);
+  border-radius: 10px;
+  border-left-width: 3px;
+  font-size: 0.88rem;
+}
+
+[data-theme='dark'] .alert--warning {
+  border-left-color: #eab308;
+  background: rgba(234, 179, 8, 0.05);
+}
+
+[data-theme='dark'] .alert--danger {
+  border-left-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+[data-theme='dark'] .alert--info {
+  border-left-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+[data-theme='dark'] .alert--success {
+  border-left-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+/* ================================================================
+   11. PAGINATION (prev/next buttons)
+   ================================================================ */
+
+[data-theme='dark'] .pagination-nav__link {
+  background: var(--gatein-bg-elevated);
+  border: 1px solid var(--gatein-border-subtle);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .pagination-nav__link:hover {
+  border-color: var(--gatein-accent);
+  background: var(--gatein-accent-glow);
+}
+
+[data-theme='dark'] .pagination-nav__sublabel {
+  font-size: 0.72rem;
+  color: var(--gatein-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+[data-theme='dark'] .pagination-nav__label {
+  font-size: 0.88rem;
+  color: var(--gatein-text-primary);
+}
+
+/* ================================================================
+   12. FOOTER
+   ================================================================ */
+
+[data-theme='dark'] .footer {
+  background: var(--gatein-bg-deep);
+  border-top: 1px solid var(--gatein-border-subtle);
+}
+
+[data-theme='dark'] .footer__title {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gatein-text-muted);
+}
+
+[data-theme='dark'] .footer__link-item {
+  font-size: 0.85rem;
+  color: var(--gatein-text-secondary);
+}
+
+[data-theme='dark'] .footer__copyright {
+  font-size: 0.78rem;
+  color: var(--gatein-text-muted);
+}
+
+/* ================================================================
+   13. BREADCRUMBS
+   ================================================================ */
+
+[data-theme='dark'] .breadcrumbs__link {
+  font-size: 0.78rem;
+  color: var(--gatein-text-muted);
+}
+
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--gatein-text-secondary);
+}
+
+/* ================================================================
+   14. SEARCH & MISC
+   ================================================================ */
+
+/* Theme toggle */
+[data-theme='dark'] .toggleButton_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module {
+  color: var(--gatein-text-muted);
+}
+
+/* Doc page wrapper — ensure dark bg */
+[data-theme='dark'] .docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module,
+[data-theme='dark'] [class*='docPage_'] {
+  background: var(--gatein-bg-primary);
+}
+
+/* Mermaid diagrams — dark theme */
+[data-theme='dark'] .docusaurus-mermaid-container {
+  background: var(--gatein-bg-elevated);
+  border: 1px solid var(--gatein-border-subtle);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+/* ================================================================
+   15. HERO BANNER (homepage)
+   ================================================================ */
+
+[data-theme='dark'] .hero--primary {
+  background: linear-gradient(135deg, var(--gatein-bg-deep) 0%, #121212 50%, var(--gatein-bg-deep) 100%);
+  border-bottom: 1px solid var(--gatein-border-subtle);
+}
+
+[data-theme='dark'] .hero__title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='dark'] .hero__subtitle {
+  color: var(--gatein-text-secondary);
+  font-size: 1rem;
+}
+
+/* ================================================================
+   16. THEME TOGGLE — Force dark mode default
+   ================================================================ */
+
+/* Hide the light/dark toggle since we're forcing dark */
+/* Uncomment below if you want to force dark only: */
+/* [data-theme='light'] { ... override light colors here ... } */

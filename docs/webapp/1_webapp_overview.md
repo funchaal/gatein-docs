@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: Painel Web — Visão Geral
+title: Visão Geral
 ---
 
-# Painel Web (Web App)
+# Visão Geral
 
 O painel web é o centro de controle do GateIn para terminais e transportadoras. É por lá que você configura layouts, gerencia usuários, define o geofence, cria comunicados e muito mais — tudo sem precisar alterar uma linha de código ou abrir um chamado de suporte.
 

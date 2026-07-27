@@ -1,4 +1,9 @@
-# 📌 Regras de Agendamento, Status em PT-BR e Lifecycle de Desativação
+---
+sidebar_position: 5
+title: Regras e Status
+---
+
+# Regras e Status
 
 Este documento consolida as regras de negócio para status de agendamentos no GateIn, mapeamento de traduções (PT-BR), regras de exibição de alertas no card do motorista, tolerância de ping do terminal, desativação por inatividade e ciclo de visibilidade de 12h na aba "Atividades" antes da migração para o "Histórico".
 
@@ -57,7 +62,7 @@ Para garantir que agendamentos inativos não fiquem travados indefinidamente nas
 
 ---
 
-## 4. Ciclo de Visibilidade de 12 Horas: Atividades ➡️ Histórico
+## 4. Ciclo de Visibilidade de 12 Horas: Atividades → Histórico
 
 A transição de tela para agendamentos desativados ocorre em duas fases para que o motorista seja notificado de forma clara no app:
 

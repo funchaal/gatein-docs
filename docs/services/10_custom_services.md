@@ -84,8 +84,8 @@ Isso é tudo que você precisa implementar. Você recebe o CPF, nome, telefone e
 
 | Header | Obrigatório | Descrição |
 | :--- | :--- | :--- |
-| `X-API-Key` | ✅ | API Key da sua empresa (`sk_live_...`) |
-| `Auth-Token` | ✅ | O JWT lido do `localStorage.auth_token` |
+| `X-API-Key` | Sim | API Key da sua empresa (`sk_live_...`) |
+| `Auth-Token` | Sim | O JWT lido do `localStorage.auth_token` |
 
 **Resposta de Sucesso:**
 ```json

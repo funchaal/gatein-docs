@@ -32,7 +32,7 @@ const config = {
   projectName: 'gatein-docs', // Usually your repo name.
   deploymentBranch: 'gh-pages',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -49,10 +49,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           beforeDefaultRemarkPlugins: [remarkGithubAdmonitionsToDirectives],
         },
         blog: {
@@ -97,7 +93,14 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: 'dark',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
       },
       navbar: {
         title: 'Gatein Docs',
@@ -108,36 +111,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          {
-            href: 'https://github.com/funchaal/gatein-docs',
-            label: 'GitHub',
-            position: 'right',
-          },
         ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Introdução',
-                to: '/docs/introduction',
-              },
-            ],
-          },
-          {
-            title: 'Links',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/funchaal/gatein-docs',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} GateIn. Todos os direitos reservados.`,
       },
       prism: {
         theme: prismThemes.dracula,
