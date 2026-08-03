@@ -108,6 +108,7 @@ Esta documentação cobre tudo que você precisa para integrar e operar o GateIn
 | **Geofence** | Configuração do perímetro de validação de localização |
 | **Comunicados (Announcements)** | Como publicar avisos para motoristas no app |
 | **Serviços Personalizados** | Como hospedar um site embutido no app com autenticação automática |
+| **Homologação e Migração** | Guia completo de testes, triagem de cenários, uso de Fake GPS e transição para produção |
 
 ---
 
